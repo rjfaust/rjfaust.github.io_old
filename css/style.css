@@ -1,0 +1,17 @@
+.header{
+    font-family: "Helvetica Neue", "Calibri", sans;
+    color: #454;
+    
+}
+.links{
+    float:right;
+    font-size:0.5em;
+    font-weight: 300;
+    margin-top:5px;
+    margin-right:15px;
+    position: absolute;
+    right: 0px;
+    padding: 10px;
+    
+
+}
