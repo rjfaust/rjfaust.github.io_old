@@ -15,3 +15,11 @@
     
 
 }
+
+
+
+p, ul, ol, td {
+    font-family: "Helvetica Neue", "Calibri", sans;
+    font-weight: 300;
+    font-size: 1.1em;
+}
