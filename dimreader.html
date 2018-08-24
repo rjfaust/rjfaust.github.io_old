@@ -1,0 +1,91 @@
+
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>DimReader: Using auto-differentiation to explain non-linear projections</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+        
+        <link rel="stylesheet" href="css/style.css">
+<!--        <script type="text/x-mathjax-config">-->
+<!--            MathJax.Hub.Config({-->
+<!--                               TeX: {-->
+<!--                               Macros: {-->
+<!--                               Var: "\\textrm{Var}",-->
+<!--                               Cov: "\\textrm{Cov}",-->
+<!--                               norm: ["||#1||", 1],-->
+<!--                               lerp: ["[#1, #2]_#3", 3],-->
+<!--                               cdf: ["\\textbf{CDF}\\{#1\\}", 1]-->
+<!--                               }-->
+<!--                               },-->
+<!--                               extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],-->
+<!--                               jax: ["input/TeX","output/HTML-CSS"],-->
+<!--                               tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]],-->
+<!--                               processEscapes: true},-->
+<!--                               'HTML-CSS': { availableFonts: [], webFont: 'TeX' }});-->
+<!--            </script>-->
+<!--        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<!--        -->
+        </head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class ="col-md-1">
+            </div>
+            <div class ="col-md-9">
+            
+            <h1 class="bold" align="left">DimReader: Using auto-differentiation to explain non-linear projections</h1>
+         </div>
+         </div>
+        <div class="row">
+            <div class ="col-md-1">
+            </div>
+            
+            <div class ="col-md-9" style="font-size:13px;  margin:0">
+                
+            
+            <p class="post-meta">
+            <a href="https://rjfaust.github.io/">Rebecca Faust</a>, <a href="http://math.arizona.edu/~glickenstein/">David Glickenstein</a>, <a href="/">Carlos Scheidegger</a><br/>
+            IEEE Trans. on Visualization and Computer Graphics
+            <br/>
+            (Proceedings of IEEE Vis 2018, to appear)</p>
+        
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-md-1">
+            </div>
+
+            <div class="col-md-3" style="padding-left:8px">
+                <span class="meta" style="float:left; margin-top:20px">
+                <img src="iris_small.pdf" alt="DimReader Plots for Iris Dataset">
+                </span>
+               
+            </div>
+            <div class="col-md-6" style="float:right;">
+                
+                
+                <p>Non-linear dimensionality reduction (NDR) methods such as LLE and t-SNE are popular with visualization researchers and experienced data analysts, but present serious problems of interpretation. In this paper, we present DimReader, a technique that recovers readable axes from such techniques. DimReader is based on analyzing infinitesimal perturbations of the dataset with respect to variables of interest. The perturbations define exactly how we want to change each point in the original dataset and we measure the effect that these changes have on the projection. The recovered axes are in direct analogy with the axis lines (grid lines) of traditional scatterplots.</p>
+                
+                <p>We also present methods for discovering perturbations on the input data that change the projection the most. The calculation of the perturbations is efficient and easily integrated into programs written in modern programming languages. We present results of DimReader on a variety of NDR methods and datasets both synthetic and real-life, and show how it can be used to compare different NDR methods. Finally, we discuss limitations of our proposal and situations where further research is needed.</p>
+                
+
+                <p><a href="DimReader.pdf">PDF</a>, <a href="https://doi.org/10.1109/TVCG.2018.2865194">DOI link </a>, <a href="https://arxiv.org/abs/1710.00992">Arxiv</a>.</p>
+                
+            </div>
+            <div class="col-md-" id="right-column" style="font-weight: 300">
+                
+                <a href="/static/papers/arxiv_dimreader_2017.pdf">
+                    <img src="/assets/img/paper-thumbs/2017-arxiv-dimreader.png" style="width:100%">
+                        </a>
+                
+                <ol id="footnotes-ol-sidebar">
+                </ol>
+            </div>
+        </div>
+    </div>
+    <hr>
+   
+    
+</body>
+</html>
