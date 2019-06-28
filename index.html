@@ -22,7 +22,27 @@
 </script>
     <body id="page-top" data-spy="scroll" data-target="#myScrollspy" data-offset="20" >
         
-    <div class="container-fluid">   
+    <div class="container-fluid"> 
+		<div class="row topnav">
+			<div class="topnav">
+			  <a href="#about" class="active">Rebecca Faust</a>
+			  <!-- Navigation links (hidden by default) -->
+			  <div id="myLinks">
+				<a class="cLink" href="#about">About</a>
+				<a class="cLink" href="#projects">Projects</a>
+				<a class="cLink" href="#publications">Publications</a>
+				<a class="cLink" href="#life">Life & Hobbies</a>
+			  </div>
+			  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+			  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+				<i class="fa fa-bars"></i>
+			  </a>
+			</div>
+		</div>
+		
+		
+		
+		
 		<div class = "row">
 			<div class="wrapper">
 				<!-- Sidebar -->
@@ -80,6 +100,41 @@
 				<!-- Page Content -->
 				<div id="content">
 					<div class="container-fluid" style="width:100%">
+					
+					<div class="center smallpage" >
+						<div class="topImage textBackground ">
+							<div  style="z-index:1;width: 100px; max-width:20%;float:left; ">
+								<img   class="center"  style="width:100%; height:auto; margin-top:5px" alt="Avatar" src="rfaustSquare.jpg">
+							</div>
+							<div   style = "padding-left:10px; float:left; max-width:60%; width:auto;" >
+								<p>
+									<a class="linkDark" href="https://www.cs.arizona.edu"> Department of Computer Science </a>
+									<br/>
+									<a class="linkDark" href="http://www.arizona.edu"> University of Arizona </a> 
+									<br/>
+									[<a class="linkDark" href="cv.pdf">CV</a>]
+								</p>
+							
+							
+							</div>
+							<div class="social-icons" style="top:0; float: right;">
+								<a href="mailto:rjfaust@email.arizona.edu" >
+									<i class="fa fa-envelope" ></i>
+								</a>
+							</div>
+							<div class="social-icons" style="float: right;">
+								<a  href="https://www.linkedin.com/in/rebecca-faust-1a89b7161/">
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</div>
+							<div class="social-icons" style="float: right;">
+								<a href="https://github.com/rjfaust">
+									<i class="fab fa-github"></i>
+								</a>
+							</div>    
+							<br/>
+						</div>
+					</div>
 						<div class="center page" id="about"  >
 							
 							<div class="textBackground">
@@ -182,7 +237,19 @@
         </div>
 	</div>
     </body>
-    
+    <script>
+	$(".cLink").click(function(){
+		myFunction();
+	})
+	function myFunction() {
+	  var x = document.getElementById("myLinks");
+	  if (x.style.display === "block") {
+		x.style.display = "none";
+	  } else {
+		x.style.display = "block";
+	  }
+	}
+	</script>
 
 </html>
 
