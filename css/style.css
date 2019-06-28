@@ -104,13 +104,21 @@ a, a:hover, a:focus {
   }
   
   .projectPage{
-
 	  width:100%;
+	  padding-left:8%;
+	  padding-right:8%;
+	  min-height:100vh;
    
+  }
+  .projectTextBackground{
+	  background-color:rgb(168, 208, 230,.8);
+	  position:relative;
+	  width: 100%;
+	  padding-bottom:10px;
+	  min-height:100vh;
   }
   .textBackground{
 	  background-color:rgb(168, 208, 230,.8);
-	  //transform: translate(0,50vh);
 	  position:relative;
 	  width: 100%;
 	  padding-bottom:10px;
