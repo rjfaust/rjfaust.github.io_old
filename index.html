@@ -7,12 +7,15 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <link href="css/fontawesome-free/css/all.min.css" rel="stylesheet">
+ <script src="images.js"></script>
+ <script src="lightslider.js"></script>
+ <link rel="stylesheet"  href="css/lightslider.css"/>
 
     <link rel="stylesheet" href="css/style.css">
-        
+
     </head>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-	
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -21,8 +24,28 @@
   gtag('config', 'UA-141790565-1');
 </script>
     <body id="page-top" data-spy="scroll" data-target="#myScrollspy" data-offset="20" >
-        
-    <div class="container-fluid">   
+
+    <div class="container-fluid">
+		<div class="row topnav">
+			<div class="topnav">
+			  <a href="#page-top" class="active">Rebecca Faust</a>
+			  <!-- Navigation links (hidden by default) -->
+			  <div id="myLinks">
+				<a class="cLink" href="#about">About</a>
+				<a class="cLink" href="#projects">Projects</a>
+				<a class="cLink" href="#publications">Publications</a>
+				<a class="cLink" href="#life">Life & Hobbies</a>
+			  </div>
+			  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+			  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+				<i class="fa fa-bars"></i>
+			  </a>
+			</div>
+		</div>
+
+
+
+
 		<div class = "row">
 			<div class="wrapper">
 				<!-- Sidebar -->
@@ -37,22 +60,22 @@
 							  <a class="link" href="https://www.cs.arizona.edu"> Department of Computer Science </a>
 							  <br/>
 							   <a class="link" href="http://www.arizona.edu"> University of Arizona </a>
-							  
+
 							<br/>
 							[<a class="link" href="cv.pdf">CV</a>]
-							
-						
+
+
 							</p>
 						</div>
 					</div>
 				<ul class="list-unstyled components nav-pills nav-stacked navbar-nav">
-				
+
 					<li class="nav-item">
 						<a class="nav-link js-scroll-trigger" href="#about">About</a>
 					</li>
 					<li  class="nav-item">
 						<a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
-						
+
 					</li>
 					<li  class="nav-item">
 						<a class="nav-link js-scroll-trigger" href="#publications">Publications</a>
@@ -72,19 +95,54 @@
 							  <a href="https://github.com/rjfaust">
 								<i class="fab fa-github"></i>
 							  </a>
-							  
-							  
-							  
+
+
+
 							</div>
 			</nav>
 				<!-- Page Content -->
 				<div id="content">
 					<div class="container-fluid" style="width:100%">
+
+					<div class="center smallpage" >
+						<div class="topImage textBackground ">
+							<div  style="z-index:1;width: 100px; max-width:20%;float:left; ">
+								<img   class="center"  style="width:100%; height:auto; margin-top:5px" alt="Avatar" src="rfaustSquare.jpg">
+							</div>
+							<div   style = "padding-left:10px; float:left; max-width:60%; width:auto;" >
+								<p>
+									<a class="linkDark" href="https://www.cs.arizona.edu"> Department of Computer Science </a>
+									<br/>
+									<a class="linkDark" href="http://www.arizona.edu"> University of Arizona </a>
+									<br/>
+									[<a class="linkDark" href="cv.pdf">CV</a>]
+								</p>
+
+
+							</div>
+							<div class="social-icons" style="top:0; float: right;">
+								<a href="mailto:rjfaust@email.arizona.edu" >
+									<i class="fa fa-envelope" ></i>
+								</a>
+							</div>
+							<div class="social-icons" style="float: right;">
+								<a  href="https://www.linkedin.com/in/rebecca-faust-1a89b7161/">
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</div>
+							<div class="social-icons" style="float: right;">
+								<a href="https://github.com/rjfaust">
+									<i class="fab fa-github"></i>
+								</a>
+							</div>
+							<br/>
+						</div>
+					</div>
 						<div class="center page" id="about"  >
-							
+
 							<div class="textBackground">
 								<div class="text" >
-								
+
 									<p class = "secHeader" > About </p>
 									<p class = "sectionBody">
 									I am a third year PhD student at the University of Arizona.
@@ -93,9 +151,9 @@
          <a class="linkDark" href="https://www.nist.gov/iaao/academic-affairs-office/nist-graduate-student-measurement-science-and-engineering-gmse" >NIST GMSE Fellow </a>
          working with <a  class="linkDark" href = "https://www.nist.gov/people/william-z-bernstein">Dr. William Bernstein </a> on
          research to help analysts better understand and debug their analysis programs using visualization.
-									
+
 									</p>
-						
+
 									<p class = "sectionBody">
 									 I recieved a B.S. in Computer Science and a B.A. in Mathematics with a concentration in statistics from the University of Montana.
 									</p>
@@ -103,7 +161,7 @@
 								</div>
 							</div>
 						</div>
-							
+
 						<div id="projects" class="center page" >
 							<div class="textBackground">
 								<div class="text">
@@ -115,34 +173,32 @@
 											[<a class="linkDark" href="https://arxiv.org/pdf/1710.00992.pdf">PDF</a>][<a class="linkDark" href="https://github.com/rjfaust/DimReader">Github</a>]
 											<br/>
 											<p class = "projDesc" style="padding-left:30px">
-											DimReader is a technique that recovers readable axes from dimensionality reduction techniques. 
-											It analyzes inﬁnitesimal perturbations of the dataset with respect to variables of interest. 
-											The recovered axes are in direct analogy with the axis lines (grid lines) of traditional 
-											scatterplots. DimReader also provides methods for discovering the perturbations on the input data that change the projection the most. 
-											
+											DimReader is a technique that recovers readable axes from dimensionality reduction techniques.
+											It analyzes inﬁnitesimal perturbations of the dataset with respect to variables of interest.
+											The recovered axes are in direct analogy with the axis lines (grid lines) of traditional
+											scatterplots. DimReader also provides methods for discovering the perturbations on the input data that change the projection the most.
+
 											</p>
 											<br/>
 										</li>
 										<li class="projectList">
-											Anteater: Interactive Visualization for Program Understanding (06.2017 - Present)
+											Anteater: Interactive Visualization for Program Understanding (06.2017 - Present) [<a class="linkDark" href="https://arxiv.org/pdf/1907.02872.pdf">PDF</a>]
 											<br/>
 											<p class = "projDesc" style="padding-left:30px">
 											Anteater is an interactive visualization system for tracing and exploring the execution of a program. It alleviates the burden of
-											manual instrumentation by automatically instrumenting source code to track the values that the user desires to inspect, along with 
-											the execution trace.  Anteater presents the trace to users through various visualizations. 
+											manual instrumentation by automatically instrumenting source code to track the values that the user desires to inspect, along with
+											the execution trace.  Anteater presents the trace to users through various visualizations.
 											 </p>
 											 <br/>
-											 </li>
-										</ul>
-									
-									
+										 </li>
+									</ul>
 									</p>
 								</div>
 							</div>
 						</div>
-							
-							
-							
+
+
+
 						<div id="publications" class="center page" >
 							<div class="textBackground">
 								<div class="text">
@@ -150,9 +206,9 @@
 									<p class = "sectionBody">
 										<ul>
 										<li class="pubList">
-										<a href="dimreader.html" class ="linkDark">DimReader: Axis Lines that Explain Non-linear Projections. </a> Rebecca Faust, David Glickenstein, Carlos Scheidegger. IEEE InfoVis 2018. [<a href="DimReader.pdf">PDF</a>]
+										<a href="dimreader.html" class ="linkDark">DimReader: Axis Lines that Explain Non-linear Projections. </a> Rebecca Faust, David Glickenstein, Carlos Scheidegger. IEEE InfoVis 2018. [<a class="linkDark" href="DimReader.pdf">PDF</a>]
 										</li>
-										
+
 										</ul>
 									</p>
 								</div>
@@ -164,25 +220,81 @@
 								<div class="text">
 									<p class = "secHeader"> Life & Hobbies </p>
 									<p class = "sectionBody">
-										<ul>
-											<li>
-												//TODO
-											</li>
-										</ul>
+										<h4>Rodger</h4>
+										<p>
+											Rodger is my 3 year old Golden Retriever. I got him when I finished my undergraduate degree and had decided to move to Arizona.
+											We moved here in 2016 and he's been my pal throughout my PhD. In order to not overwhelm my friends with pictures of Rodger, I started
+											an <a href="https://www.instagram.com/goldenrodgerdodger2016/?hl=en" class="linkDark">Instagram</a> to relieve my need to share cute
+											pictures of him.
+										</p>
+
+										<div class="demo">
+											<div class="item">
+												<ul id="content-slider" class="content-slider ">
+
+												</ul>
+											</div>
+
+										</div>
+
+										<h4>Yarn</h4>
+                    <p>
+											In my free time, I like to crochet and occasionally knit.  Below are some of the things I have made.
+
+										</p>
+
+										<div class="demo">
+											<div class="item">
+												<ul id="yarn-slider" class="content-slider ">
+
+												</ul>
+											</div>
+
+										</div>
 									</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				        
             </div>
-            
-           
         </div>
 	</div>
     </body>
-    
+    <script>
+	$(".cLink").click(function(){
+		myFunction();
+	})
+	function myFunction() {
+	  var x = document.getElementById("myLinks");
+	  if (x.style.display === "block") {
+		x.style.display = "none";
+	  } else {
+		x.style.display = "block";
+	  }
+	}
+  $(document).ready(function() {
+    $("#content-slider").lightSlider({
+           loop:true,
+           keyPress:true
+       });
+       $("#yarn-slider").lightSlider({
+              loop:true,
+              keyPress:true
+          });
+
+  });
+  images.rodgerImageNames.forEach(function(d){
+
+    $("#content-slider").append("<li data-thumb=\"img/rodger/"+d.name+".jpg\"><div><img src=\"img/rodger/"+d.name+".jpg \"/></div></li>")
+
+  })
+  images.yarnImageNames.forEach(function(d){
+
+    $("#yarn-slider").append("<li data-thumb=\"img/yarn/"+d.name+".jpg\"><div><img src=\"img/yarn/"+d.name+".jpg \"/></div></li>")
+
+  })
+
+	</script>
 
 </html>
-
