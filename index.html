@@ -145,7 +145,7 @@
 
 									<p class = "secHeader" > About </p>
 									<p class = "sectionBody">
-									I am a third year PhD student at the University of Arizona.
+									I am a fourth year PhD student at the University of Arizona.
 									My interests include data visualization and exploratory data analysis.  My advisor is
 									<a class="linkDark" href="https://cscheid.net">Dr. Carlos Scheidegger. </a>  I am currently a
          <a class="linkDark" href="https://www.nist.gov/iaao/academic-affairs-office/nist-graduate-student-measurement-science-and-engineering-gmse" >NIST GMSE Fellow </a>
@@ -169,7 +169,7 @@
 									<p class = "sectionBody">
 									<ul>
 										<li class="projectList">
-											DimReader: Axis lines that explain non-linear projections (09.2016-03.2018)
+											DimReader: Axis lines that explain non-linear projections
 											[<a class="linkDark" href="https://arxiv.org/pdf/1710.00992.pdf">PDF</a>][<a class="linkDark" href="https://github.com/rjfaust/DimReader">Github</a>]
 											<br/>
 											<p class = "projDesc" style="padding-left:30px">
@@ -182,7 +182,7 @@
 											<br/>
 										</li>
 										<li class="projectList">
-											Anteater: Interactive Visualization for Program Understanding (06.2017 - Present) [<a class="linkDark" href="https://arxiv.org/pdf/1907.02872.pdf">PDF</a>]
+											Anteater: Interactive Visualization for Program Understanding [<a class="linkDark" href="https://arxiv.org/pdf/1907.02872.pdf">PDF</a>]
 											<br/>
 											<p class = "projDesc" style="padding-left:30px">
 											Anteater is an interactive visualization system for tracing and exploring the execution of a program. It alleviates the burden of
@@ -274,13 +274,21 @@
 	  }
 	}
   $(document).ready(function() {
+    var nItem = parseInt(((screen.width*.85)*.75*.9)/266)
+
+    if (nItem <1){
+      nItem = 1;
+    }
+
     $("#content-slider").lightSlider({
            loop:true,
-           keyPress:true
+           keyPress:true,
+           item: nItem
        });
        $("#yarn-slider").lightSlider({
               loop:true,
-              keyPress:true
+              keyPress:true,
+              item: nItem
           });
 
   });
