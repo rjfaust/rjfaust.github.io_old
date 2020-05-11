@@ -28,3 +28,36 @@
   </div>
 
 </div>
+
+
+<script>
+  $(document).ready(function() {
+    var nItem = parseInt(((screen.width*.85)*.75*.9)/266)
+
+    if (nItem <1){
+      nItem = 1;
+    }
+
+    $("#content-slider").lightSlider({
+           loop:true,
+           keyPress:true,
+           item: nItem
+       });
+       $("#yarn-slider").lightSlider({
+              loop:true,
+              keyPress:true,
+              item: nItem
+          });
+
+  });
+  images.rodgerImageNames.forEach(function(d){
+
+    $("#content-slider").append("<li data-thumb=\"/assets/images/rodger/"+d.name+".jpg\"><div><img src=\"/assets/images/rodger/"+d.name+".jpg \"/></div></li>")
+
+  })
+  images.yarnImageNames.forEach(function(d){
+
+    $("#yarn-slider").append("<li data-thumb=\"/assets/images/yarn/"+d.name+".jpg\"><div><img src=\"/assets/images/yarn/"+d.name+".jpg \"/></div></li>")
+
+  })
+</script>
