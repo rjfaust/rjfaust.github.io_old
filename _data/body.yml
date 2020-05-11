@@ -1,0 +1,16 @@
+
+- name: About
+  id: about
+  include: about.html
+- name: Research Projects
+  id: projects
+  include: projects.html
+- name: Publications
+  id: publications
+  include: pubs.html
+- name: Teaching
+  id: teaching
+  include: teaching.html
+- name: Life & Hobbies
+  id: life
+  include: life.html

@@ -1,0 +1,11 @@
+
+- name: About
+  link: about
+- name: Projects
+  link: projects
+- name: Publications
+  link: publications
+- name: Teaching
+  link: teaching
+- name: Life & Hobbies
+  link: life

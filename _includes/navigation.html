@@ -1,0 +1,56 @@
+    <nav id="myScrollspy" class="sidebar hidden-tablet hidden-phone" >
+    					<div class="sidebar-header">
+    						<h3>Rebecca Faust</h3>
+    					</div>
+    					<div class="mx-auto">
+    					<img width="65%"  class="center"  style="height:auto; margin-top:5px" alt="Avatar" src="/assets/images/rfaustSquare.jpg">
+    					  <div style = " text-align: center">
+    							  <p>
+    							  <a class="link" href="https://www.cs.arizona.edu"> Department of Computer Science </a>
+    							  <br/>
+    							   <a class="link" href="http://www.arizona.edu"> University of Arizona </a>
+
+    							<br/>
+    							[<a class="link" href="Faust_cv.pdf">CV</a>]
+
+
+    							</p>
+    						</div>
+    					</div>
+    				<ul class="list-unstyled components nav-pills nav-stacked navbar-nav">
+              {% for item in site.data.navigation %}
+              <li class="nav-item">
+    						<a class="nav-link js-scroll-trigger" href="#{{ item.link }}">{{item.name}}</a>
+    					</li>
+
+              {% endfor %}
+    					<!-- <li class="nav-item">
+    						<a class="nav-link js-scroll-trigger" href="#about">About</a>
+    					</li>
+    					<li  class="nav-item">
+    						<a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
+
+    					</li>
+    					<li  class="nav-item">
+    						<a class="nav-link js-scroll-trigger" href="#publications">Publications</a>
+    					</li>
+         <li  class="nav-item">
+    						<a class="nav-link js-scroll-trigger" href="#teaching">Teaching</a>
+    					</li>
+    					<li class="nav-item">
+    						<a class="nav-link js-scroll-trigger" href="#life">Life & Hobbies</a>
+    					</li> -->
+    				</ul>
+        <br/>
+        	<div class="social-icons">
+    								<a href="mailto:rjfaust@email.arizona.edu" >
+    								<i class="fa fa-envelope" ></i>
+    							  </a>
+    							  <a  href="https://www.linkedin.com/in/rebecca-faust-1a89b7161/">
+    								<i class="fab fa-linkedin-in"></i>
+    							  </a>
+    							  <a href="https://github.com/rjfaust">
+    								<i class="fab fa-github"></i>
+    							  </a>
+    							</div>
+    			</nav>

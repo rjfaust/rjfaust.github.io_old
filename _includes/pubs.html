@@ -1,0 +1,14 @@
+
+<ul>
+  {% for pub in site.publications %}
+
+  <li class="pubList">
+ <a href="{{pub.url}}" rel="permalink" class ="linkDark">{{pub.title}}</a>
+ {% for auth in pub.authors %}
+   {{auth.auth[0].name}}
+ {% endfor %} {{pub.venue}}
+  </li>
+{% endfor %}
+
+
+</ul>

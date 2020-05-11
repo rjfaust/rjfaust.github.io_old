@@ -1,0 +1,10 @@
+
+<ul>
+  {% for class in site.teaching %}
+
+  <li class="classList">
+  {{class.semester}}: {{class.course_id}} <a href="{{class.url}}" rel="permalink" class ="linkDark">{{class.course_name}}</a>
+  </li>
+{% endfor %}
+
+</ul>
