@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/syllabus.css">
     <title> CSc 245 Syllabus </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
@@ -38,10 +39,11 @@ and functions, properties of integers, counting methods, probability, and recurr
 <h4 id="instructor-and-contact-information">Instructor and Contact Information</h4>
 <ul>
   <li><strong>Instructor</strong>: Rebecca Faust</li>
-  <li><strong>Email</strong>: <a href="mailto:rjfaust@email.arizona.edu">rjfaust@email.arizona.edu</a></li>
+  <li><strong>Email</strong>: <a href="mailto:rjfaust+sum20csc245@email.arizona.edu">rjfaust+sum20csc245@email.arizona.edu</a></li>
   <li><strong>TA</strong>: TBD</li>
   <li><strong>TA Email</strong>: TBD</li>
-  <li><strong>Office Hours</strong>: Monday 10-11am, Thursday 2-3pm,</li>
+  <li><strong>Office Hours</strong>: Monday 10-12am, Thursday 2-4pm</li>
+  <li><strong>Course Webpage</strong>: <a href="">https://rjfaust.github.io/teaching/summer2020/csc245</a></li>
 </ul>
 
 <p>Instructor name, office location, telephone number, e-mail address
@@ -62,16 +64,21 @@ Web information, including course home page, instructor home page, and D2L infor
   <li>
     <p><strong>Course Objectives</strong>:</p>
     <ol>
-      <li>Learn Logic</li>
-      <li>Learn Proofs</li>
-      <li>Learn and apply math concepts to solve CS problems</li>
+      <li>Learn and apply principles of logic to construct sound arguments.</li>
+      <li>Learn several proof forms and construct complete proofs using those forms.</li>
+      <li>Learn a variety of fundamental mathematical principles and apply them to solve problems relevant to the study of computer science.</li>
     </ol>
   </li>
 </ul>
 
 <h4 id="expected-learning-outcomes">Expected Learning Outcomes</h4>
 <ol>
-  <li>Write a proof</li>
+  <li>Reconstruct concept definitions and explain how more advanced concepts are defined in terms of more basic concepts.</li>
+  <li>Given a set of hypotheses, determine whether or not a given conclusion logically follows from them.</li>
+  <li>Given a non-trivial provable conjecture, construct a complete and logically sound proof that convincingly argues the truth of the conjecture.</li>
+  <li>Demonstrate ability to convert between logic and set expressions.</li>
+  <li>Solve specific types of recurrence relations and prove that the solutions define the same sequences as the original relations.</li>
+  <li>Given a counting problem, produce the correct quantity of potential outcomes by identifying and applying the appropriate counting concepts.</li>
 </ol>
 
 <!-- Learning outcomes describe what a student should know or be able to do upon completing the course, based on knowledge/skills gained. Outcomes are stated in measurable terms and should be aligned with the learning outcomes for the program (e.g., Major, Minor, General Education).  3-4 outcomes are  sufficient. Links for resources on learning outcomes:
@@ -79,126 +86,353 @@ OIA learning outcome guide
 OIA program outcomes
 Resource from San Francisco State University -->
 
+<p><br /></p>
 <h2 id="course-policies">Course Policies</h2>
 <h4 id="absence-and-class-participation-policy">Absence and Class Participation Policy</h4>
-<p>Recommended: Be very specific about your absence policy and how you will handle exceptions. Encourage students to see an advisor if it is after the drop period (when a W will not appear on the transcript). Advisors will provide options and alternatives as appropriate for individual student situations.</p>
+<p>Because the course is online, attendance and participation will be measured through students completing the lecture videos.  Lecture videos will be hosted on Playposit and will have questions interspersed to help keep students engaged.  Completion of these videos by the set deadline will count towards class participation/attendance.  Furthermore, there will be weekly quizzes (with the exception of the first week) that will also count towards participation.
+<!-- Recommended: Be very specific about your absence policy and how you will handle exceptions. Encourage students to see an advisor if it is after the drop period (when a W will not appear on the transcript). Advisors will provide options and alternatives as appropriate for individual student situations. --></p>
 
 <p>The UA’s policy concerning Class Attendance, Participation, and Administrative Drops is available at <a href="">http://catalog.arizona.edu/policy/class-attendance-participation-and-administrative-drop</a><br />
 The UA policy regarding absences for any sincerely held religious belief, observance or practice will be accommodated where reasonable: <a href="">http://policy.arizona.edu/human-resources/religious-accommodation-policy</a>.
-Absences pre-approved by the UA Dean of Students (or dean’s designee) will be honored. See <a href="">https://deanofstudents.arizona.edu/absences</a>
-Recommended language:  [This may be edited to fit a particular course. Note, however, that faculty may not require students to provide documentation of health-related issues in order to have an absence excused.] Participating in the course and attending lectures and other course events are vital to the learning process. As such, attendance is required at all lectures and discussion section meetings. Absences may affect a student’s final course grade. If you anticipate being absent, are unexpectedly absent, or are unable to participate in class online activities, please contact me as soon as possible.  To request a disability-related accommodation to this attendance policy, please contact the Disability Resource Center at (520) 621-3268 or drc-info@email.arizona.edu. If you are experiencing unexpected barriers to your success in your courses, the Dean of Students Office is a central support resource for all students and may be helpful. The Dean of Students Office is located in the Robert L. Nugent Building, room 100, or call 520-621-7057.</p>
+Absences pre-approved by the UA Dean of Students (or dean’s designee) will be honored. See <a href="">https://deanofstudents.arizona.edu/absences</a></p>
 
-<h4 id="makeup-policy-for-students-who-register-late-recommended-not-required">Makeup Policy for Students Who Register Late (recommended, not required)</h4>
-<p>Statement on whether students who register after the first class meeting may make up missed assignments/quizzes and the deadline for doing so</p>
+<p>Participating in the course and attending lectures and other course events are vital to the learning process. As such, attendance is required at all lectures and discussion section meetings. Absences may affect a student’s final course grade. If you anticipate being absent, are unexpectedly absent, or are unable to participate in class online activities, please contact me as soon as possible.  To request a disability-related accommodation to this attendance policy, please contact the Disability Resource Center at (520) 621-3268 or drc-info@email.arizona.edu. If you are experiencing unexpected barriers to your success in your courses, the Dean of Students Office is a central support resource for all students and may be helpful. The Dean of Students Office is located in the Robert L. Nugent Building, room 100, or call 520-621-7057.</p>
+
+<h4 id="makeup-policy-for-students-who-register-late">Makeup Policy for Students Who Register Late</h4>
+<p>Students who register after the first class meeting may make up missed assignments at a deadline set in consultation with the instructor.</p>
 
 <h4 id="course-communications">Course Communications</h4>
 <p>We will primarily communicate through email (<a href="mailto:rjfaust@email.arizona.edu">rjfaust@email.arizona.edu</a>) and <a href="https://piazza.com/home/summer2020/csc245/home">Piazza</a>.</p>
 
-<p>D2L will be used for posting lectures and grades.</p>
+<p><a href="https://d2l.arizona.edu/d2l/home/899542">D2L</a> will be used for posting lectures and grades.</p>
 
-<p>Means by which online communication will be conducted (e.g., official UA e-mail address, D2L, Piazza)</p>
+<p><a href="https://www.gradescope.com/courses/124297">Gradescope</a> will be used for homework submissions, quizzes, and exams.</p>
+
+<!-- Means by which online communication will be conducted (e.g., official UA e-mail address, D2L, Piazza) -->
 
 <h4 id="required-texts-or-readings">Required Texts or Readings</h4>
-<p>List both required and recommended texts, books, articles, etc.; delineate required versus optional.
-Availability: purchased, library reserve, or class handouts and D2L</p>
+<ul>
+  <li>
+    <p><strong>Required</strong>: <a href="https://www.mheducation.com/highered/product/M125967651X.html">Discrete Mathematics and its Applications (Rosen)</a>, U.S. 8th ed., McGraw-Hill, 2019.  <strong><em>Do not buy an international edition or an earlier edition!</em></strong></p>
+  </li>
+  <li>
+    <p>Optional Supplemental Texts:</p>
 
+    <ul>
+      <li><a href="https://www.mheducation.com/highered/product/1259731693.html">Student Solutions Guide</a> (8th edition, Kenneth Rosen, McGraw-Hill, 2019) offers more complete solutions to odd-numbered exercises in the textbook.</li>
+      <li>Proof-centeric books
+        <ul>
+          <li><a href="http://www.cambridge.org/gb/academic/subjects/mathematics/logic-categories-and-sets/how-prove-it-structured-approach-2nd-edition">How to Prove It</a> (2/e, Velleman, Cambridge, 2006)</li>
+          <li><a href="http://www.people.vcu.edu/~rhammack/BookOfProof/">Book of Proof</a> (Richard Hammack, 2013)</li>
+        </ul>
+      </li>
+      <li>Mini-discrete-structures books that exist online:
+        <ul>
+          <li><a href="http://zimmer.csufresno.edu/~larryc/proofs/proofs.html">How to write proofs</a> (Larry W. Cusick)</li>
+          <li><a href="https://cusack.hope.edu/Notes/Notes/Books/Active%20Introduction%20to%20Discrete%20Mathematics%20and%20Algorithms/ActiveIntroToDiscreteMathAndAlgorithms.2.6.3.pdf">An Active Introduction To Discrete Mathematics and Algorithms</a> (Charles A. Cusack, David A. Santos, 2014)</li>
+          <li><a href="http://www.whitman.edu/mathematics/higher_math_online/">Introduction to Higher Mathematics</a> (Patrick Keef, David Guichard)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<!-- List both required and recommended texts, books, articles, etc.; delineate required versus optional.
+Availability: purchased, library reserve, or class handouts and D2L -->
+<p><br /></p>
 <h4 id="lecture-topics">Lecture Topics</h4>
-<p>List topics in logical units in a weekly/daily schedule, including assignment due dates and exam dates.</p>
-
-<p>Lecture Topics (subject to change)</p>
 
 <table>
   <thead>
     <tr>
       <th>Topic</th>
-      <th> </th>
       <th style="text-align: left">Text Sections</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>1. Math Review</td>
-      <td> </td>
       <td style="text-align: left">Handout</td>
     </tr>
     <tr>
       <td>2. Logic</td>
-      <td> </td>
       <td style="text-align: left">1.1, 1.3</td>
     </tr>
     <tr>
       <td>3. Quantification</td>
-      <td> </td>
       <td style="text-align: left">1.4, 1.5</td>
     </tr>
     <tr>
       <td>4. Arguments</td>
-      <td> </td>
       <td style="text-align: left">1.6</td>
     </tr>
     <tr>
       <td>5. Proofs</td>
-      <td> </td>
       <td style="text-align: left">1.7, 1.8</td>
     </tr>
     <tr>
       <td>6.  Sets</td>
-      <td> </td>
       <td style="text-align: left">2.1, 2.2</td>
     </tr>
     <tr>
       <td>7.  Matrices</td>
-      <td> </td>
       <td style="text-align: left">2.6</td>
     </tr>
     <tr>
       <td>8.  Relations</td>
-      <td> </td>
       <td style="text-align: left">9.1, 9.3, 9.5, 9.6</td>
     </tr>
     <tr>
-      <td>8. Functions</td>
-      <td> </td>
+      <td>9. Functions</td>
       <td style="text-align: left">2.3</td>
     </tr>
     <tr>
-      <td>9.  Integers</td>
-      <td> </td>
+      <td>10.  Integers</td>
       <td style="text-align: left">2.3</td>
     </tr>
     <tr>
-      <td>10. Sequences &amp; Strings</td>
-      <td> </td>
+      <td>11. Sequences &amp; Strings</td>
       <td style="text-align: left">2.4</td>
     </tr>
     <tr>
-      <td>11. Mathematical Induction</td>
-      <td> </td>
+      <td>12. Mathematical Induction</td>
       <td style="text-align: left">5.1, 4.2</td>
     </tr>
     <tr>
-      <td>12. Counting</td>
-      <td> </td>
+      <td>13. Counting</td>
       <td style="text-align: left">6.1 - 6.6</td>
     </tr>
     <tr>
-      <td>13. Recursive Algorithms</td>
-      <td> </td>
+      <td>14. Recursive Algorithms</td>
       <td style="text-align: left">3.1, 5.3, 5.4</td>
     </tr>
     <tr>
-      <td>14. Recurrence Relations</td>
-      <td> </td>
+      <td>15. Recurrence Relations</td>
       <td style="text-align: left">8.1, 8.2</td>
     </tr>
     <tr>
-      <td>15. Finite Probability</td>
-      <td> </td>
+      <td>16. Finite Probability</td>
       <td style="text-align: left">7.1, 7.2</td>
     </tr>
   </tbody>
 </table>
 
+<p><br /></p>
+<h4 id="topic-schedule">Topic Schedule</h4>
+
+<p>Below is the planned schedule for the semester.  However, it is subject to change as the semester goes on.  A weekly schedule will be provided on the class webpage at he start of each week. Note, because the course is entirely online, I will do my best to release all of the lectures for the current week at the start of the week and they must all be completed by the end of the week. However, some weeks I may choose to release videos throughout the week rather than all at once.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Week</th>
+      <th style="text-align: center">Date</th>
+      <th style="text-align: center">Scheduled Topics</th>
+      <th style="text-align: center">Assigned</th>
+      <th style="text-align: center">Due Today</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">M 06/08</td>
+      <td style="text-align: center">Syllabus, 1, 2</td>
+      <td style="text-align: center">Homework 1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">F 06/12</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Homework 2</td>
+      <td style="text-align: center">Homework 1 (5pm)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">M 06/15</td>
+      <td style="text-align: center">3, 4</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">T 06/16</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Quiz 1</td>
+      <td style="text-align: center">Quiz 1 (midnight)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">F 06/19</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Homework 3</td>
+      <td style="text-align: center">Homework 2 (5pm)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">M 06/22</td>
+      <td style="text-align: center">4 (cont’d), 5</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">T 06/23</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Quiz 2</td>
+      <td style="text-align: center">Quiz 2 (midnight)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">F 06/26</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Homework 4</td>
+      <td style="text-align: center">Homework 3 (5pm)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">M 06/29</td>
+      <td style="text-align: center">6, 7</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">T 06/30</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Quiz 3</td>
+      <td style="text-align: center">Quiz 3 (midnight)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"><strong>Th 07/2</strong></td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Homework 5 (practice)</td>
+      <td style="text-align: center">Homework 4 (5pm)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">M 07/06</td>
+      <td style="text-align: center">7 (cont’d), 8</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">T 07/07</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">NO QUIZ</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">F 07/10</td>
+      <td style="text-align: center">Midterm</td>
+      <td style="text-align: center">Homework 6</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">M 07/13</td>
+      <td style="text-align: center">9, 10</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">T 07/14</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Quiz 4</td>
+      <td style="text-align: center">Quiz 4 (midnight)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">F 07/17</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Homework 7</td>
+      <td style="text-align: center">Homework 6 (5pm)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">M 07/20</td>
+      <td style="text-align: center">11, 12</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">T 07/21</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Quiz 5</td>
+      <td style="text-align: center">Quiz 5 (midnight)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">F 07/24</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Homework 8</td>
+      <td style="text-align: center">Homework 7 (5pm)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">8</td>
+      <td style="text-align: center">M 07/27</td>
+      <td style="text-align: center">13, 14</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">T 07/28</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Quiz 6</td>
+      <td style="text-align: center">Quiz 6 (midnight)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">F 07/31</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Homework 9</td>
+      <td style="text-align: center">Homework 8 (5pm)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">9</td>
+      <td style="text-align: center">M 08/03</td>
+      <td style="text-align: center">14 (cont’d), 15, 16</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">T 08/04</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Quiz 7</td>
+      <td style="text-align: center">Quiz 7 (midnight)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">F 08/07</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Homework 10 (practice)</td>
+      <td style="text-align: center">Homework 9 (5pm)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">M 08/10</td>
+      <td style="text-align: center">16 (cont’d), Review</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">W 08/12</td>
+      <td style="text-align: center">Final Exam</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
 <h4 id="assignments-and-examinations-scheduledue-dates">Assignments and Examinations: Schedule/Due Dates</h4>
 
 <p>Below is a projected schedule of topics and assignments.  Assignments will be released on Friday morning (with the exception of the first assignment which will be released the first day of class) and due the following Friday at 5pm.</p>
@@ -226,10 +460,22 @@ Availability: purchased, library reserve, or class handouts and D2L</p>
       <td style="text-align: center">June 19, 2020</td>
     </tr>
     <tr>
+      <td>Quiz 1</td>
+      <td style="text-align: left">Topic 1 &amp; 2</td>
+      <td>June 16, 2020</td>
+      <td style="text-align: center">June 16, 2020</td>
+    </tr>
+    <tr>
       <td>Homework 3</td>
       <td style="text-align: left">Topics 3 &amp; 4</td>
       <td>June 19, 2020</td>
       <td style="text-align: center">June 26, 2020</td>
+    </tr>
+    <tr>
+      <td>Quiz 2</td>
+      <td style="text-align: left">Topic 3 &amp; 4</td>
+      <td>June 23, 2020</td>
+      <td style="text-align: center">June 23, 2020</td>
     </tr>
     <tr>
       <td>Homework 4</td>
@@ -238,15 +484,21 @@ Availability: purchased, library reserve, or class handouts and D2L</p>
       <td style="text-align: center">July 2, 2020</td>
     </tr>
     <tr>
-      <td>Midterm 1</td>
-      <td style="text-align: left">Topics 1-5</td>
-      <td>July 6, 2020</td>
-      <td style="text-align: center">July 6, 2020</td>
+      <td>Quiz 3</td>
+      <td style="text-align: left">Topic 4 &amp; 5</td>
+      <td>June 30, 2020</td>
+      <td style="text-align: center">June 30, 2020</td>
     </tr>
     <tr>
       <td>Homework 5</td>
       <td style="text-align: left">Topic 6</td>
       <td>July 2, 2020</td>
+      <td style="text-align: center">(Practice)</td>
+    </tr>
+    <tr>
+      <td>Midterm 1</td>
+      <td style="text-align: left">Topics 1-5</td>
+      <td>July 10, 2020</td>
       <td style="text-align: center">July 10, 2020</td>
     </tr>
     <tr>
@@ -256,16 +508,22 @@ Availability: purchased, library reserve, or class handouts and D2L</p>
       <td style="text-align: center">July 17, 2020</td>
     </tr>
     <tr>
+      <td>Quiz 4</td>
+      <td style="text-align: left">Topic 6, 7 &amp; 8</td>
+      <td>July 14, 2020</td>
+      <td style="text-align: center">July 14, 2020</td>
+    </tr>
+    <tr>
       <td>Homework 7</td>
       <td style="text-align: left">Topic 9 &amp; 10</td>
       <td>July 17, 2020</td>
-      <td style="text-align: center">July ?, 2020</td>
+      <td style="text-align: center">July 24, 2020</td>
     </tr>
     <tr>
-      <td>Midterm 2</td>
-      <td style="text-align: left">Topics 6-10</td>
-      <td>July 24, 2020</td>
-      <td style="text-align: center">July 24, 2020</td>
+      <td>Quiz 5</td>
+      <td style="text-align: left">Topic 9 &amp; 10</td>
+      <td>July 21, 2020</td>
+      <td style="text-align: center">June 21, 2020</td>
     </tr>
     <tr>
       <td>Homework 8</td>
@@ -274,22 +532,28 @@ Availability: purchased, library reserve, or class handouts and D2L</p>
       <td style="text-align: center">July 31, 2020</td>
     </tr>
     <tr>
+      <td>Quiz 6</td>
+      <td style="text-align: left">Topic 11 &amp; 12</td>
+      <td>July 28, 2020</td>
+      <td style="text-align: center">July 28, 2020</td>
+    </tr>
+    <tr>
       <td>Homework 9</td>
       <td style="text-align: left">Topics 12 &amp;13</td>
       <td>July 31, 2020</td>
       <td style="text-align: center">August 7, 2020</td>
     </tr>
     <tr>
+      <td>Quiz 7</td>
+      <td style="text-align: left">Topic 13 &amp; 12</td>
+      <td>August 4, 2020</td>
+      <td style="text-align: center">August 4, 2020</td>
+    </tr>
+    <tr>
       <td>Homework 10</td>
       <td style="text-align: left">Topics 14-16</td>
       <td>August 7, 2020</td>
-      <td style="text-align: center">August ?, 2020</td>
-    </tr>
-    <tr>
-      <td>Practice</td>
-      <td style="text-align: left">Review of all Topics</td>
-      <td>August 7, 2020</td>
-      <td style="text-align: center">———</td>
+      <td style="text-align: center">(practice)</td>
     </tr>
     <tr>
       <td>Final</td>
@@ -300,28 +564,62 @@ Availability: purchased, library reserve, or class handouts and D2L</p>
   </tbody>
 </table>
 
-<p>Number of required papers and assignments, with description
+<!-- Number of required papers and assignments, with description
 Number of quizzes and exams
-Recommended, not required: Policy on revision and resubmission of assignments, with appropriate deadlines.</p>
-
+Recommended, not required: Policy on revision and resubmission of assignments, with appropriate deadlines. -->
+<p><br /></p>
 <h4 id="final-examination-or-project">Final Examination or Project</h4>
-<p>The date and time of the final exam or project, along with links to the Final Exam Regulations, <a href="">https://www.registrar.arizona.edu/courses/final-examination-regulations-and-information</a>, and Final Exam Schedule, <a href="">http://www.registrar.arizona.edu/schedules/finals.htm</a></p>
+<p>The final will be on August 12.<br />
+The date and time of the final exam or project, along with links to the Final Exam Regulations, <a href="">https://www.registrar.arizona.edu/courses/final-examination-regulations-and-information</a>, and Final Exam Schedule, <a href="">http://www.registrar.arizona.edu/schedules/finals.htm</a></p>
 
 <h4 id="grading-scale-and-policies">Grading Scale and Policies</h4>
-<p>Specify the grade distribution for the course. University policy regarding grades and grading systems is available at <a href="">http://catalog.arizona.edu/policy/grades-and-grading-system</a>
+<p>Grades will be assigned on the following scale:</p>
+
+<ul>
+  <li>A&gt;=90%</li>
+  <li>80%&lt;=B&lt;90%</li>
+  <li>70%&lt;=C&lt;80%</li>
+  <li>60%&lt;=D&lt;70%</li>
+  <li>F&lt;60%</li>
+</ul>
+
+<p><br />
+Grading will be based on performance on the set of assignments, the midterm, the final exam, and class participation (completing quizzes and lecture videos).</p>
+<ul>
+  <li>Homework</li>
+  <li>Midterm Exam:</li>
+  <li>Final Exam:</li>
+  <li>Quizzes:</li>
+  <li>Lecture Videos:
+<!-- Specify the grade distribution for the course. University policy regarding grades and grading systems is available at [http://catalog.arizona.edu/policy/grades-and-grading-system]()
 Provide a detailed explanation of the methods of evaluation and how the final grade will be calculated, including components/assignments, weightings, evaluation criteria, explanation of how late work will be graded, and description of extra-credit opportunities.
 Department of Computer Science Grading Policy:
 Instructors will explicitly promise when every assignment and exam will be graded and returned to students.  These promised dates will appear in the syllabus, associated with the corresponding due dates and exam dates.
 Graded homework will be returned before the next homework is due.
-Exams will be returned “promptly”, as defined by the instructor (and as promised in the syllabus).
+Exams will be returned "promptly", as defined by the instructor (and as promised in the syllabus).
 Grading delays beyond promised return-by dates will be announced as soon as possible with an explanation for the delay.
-If the course is a 400/500: Include a grading scale (as per above) that is specific to graduate students. Also include a description of how the experiences of undergraduate and graduate students will be differentiated in addition to information on how this requirement/experience figures in the grading scheme.
-Requests for incomplete (I) or withdrawal (W) must be made in accordance with University policies, which are available at <a href="">http://catalog.arizona.edu/policy/grades-and-grading-system#incomplete</a> and <a href="">http://catalog.arizona.edu/policy/grades-and-grading-system#Withdrawal</a>, respectively.
+If the course is a 400/500: Include a grading scale (as per above) that is specific to graduate students. Also include a description of how the experiences of undergraduate and graduate students will be differentiated in addition to information on how this requirement/experience figures in the grading scheme. --></li>
+</ul>
+
+<h5 id="department-of-computer-science-grading-policy">Department of Computer Science Grading Policy</h5>
+<ol>
+  <li>Instructors will explicitly promise when every assignment and exam will be graded and returned to students. These promised dates will appear in the syllabus, associated with the corresponding due dates and exam dates.</li>
+  <li>Graded homework will be returned before the next homework is due.</li>
+  <li>Exams will be returned “promptly”, as defined by the instructor (and as promised in the syllabus).</li>
+  <li>Grading delays beyond promised return-by dates will be announced as soon as possible with an explanation for the delay.</li>
+</ol>
+
+<h5 id="homework--quiz-policies">Homework &amp; Quiz Policies</h5>
+<ul>
+  <li>Homework assignments and quizzes are designed to give you hands on experience with topics in preparation for the exams.</li>
+  <li>All homework assignemnts are out of 100 points and quizzes are out of 10 points.</li>
+  <li><em>Legibility</em>: I strongly encourage you to type your homework assignments. In fact, typed homework assignments will recieve 5 points of extra credit</li>
+</ul>
+
+<p>Requests for incomplete (I) or withdrawal (W) must be made in accordance with University policies, which are available at <a href="">http://catalog.arizona.edu/policy/grades-and-grading-system#incomplete</a> and <a href="">http://catalog.arizona.edu/policy/grades-and-grading-system#Withdrawal</a>, respectively.
 Dispute of Grade Policy (recommended, not required): Provide the acceptable time period for disputing a grade on a paper, project, or exam.</p>
 
-<h4 id="honors-credit-recommended-not-required">Honors Credit (recommended, not required)</h4>
-<p>Recommended language, if applicable: Students wishing to contract this course for Honors Credit should e-mail me to set up an appointment to discuss the terms of the contact and to sign the Honors Course Contract Request Form. The form is available at <a href="">http://www.honors.arizona.edu/honors-contracts</a></p>
-
+<p><br /></p>
 <h2 id="department-policies">Department Policies</h2>
 
 <h4 id="department-of-computer-science-code-of-conduct">Department of Computer Science Code of Conduct</h4>
@@ -334,8 +632,6 @@ Alternate language for those who want to restrict computers and laptops to an ar
 Alternate recommended language for those who do not wish to permit laptops in the classroom: The use of personal electronics such as laptops, iPads, and other such mobile devices is distracting to the other students and the instructor. Their use can degrade the learning environment. Therefore, students are not permitted to use these devices during the class period.</p>
 
 <h4 id="pronoun-preference">Pronoun Preference</h4>
-<p>If you choose to, include your pronoun preferences and those of your TAs, if they are comfortable.</p>
-
 <p>This course affirms people of all gender expressions and gender identities. If you prefer to be called a different name than what is on the class roster, please let me know. Feel free to correct instructors on your preferred gender pronoun. If you have any questions or concerns, please do not hesitate to contact me directly in class or via email (instructor email). If you wish to change your preferred name or pronoun in the UAccess system, please use the following guidelines:
 Preferred name: University of Arizona students may choose to identify themselves within the University community using a preferred first name that differs from their official/legal name. A student’s preferred name will appear instead of the person’s official/legal first name in select University-related systems and documents, provided that the name is not being used for the purpose of misrepresentation. Students are able to update their preferred names in UAccess.
 Pronouns: Students may designate pronouns they use to identify themselves. Instructors and staff are encouraged to use pronouns for people that they use for themselves as a sign of respect and inclusion. Students are able to update and edit their pronouns in UAccess.

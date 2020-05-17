@@ -16,7 +16,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 ### Class Information
 
 + **Instructor**: Rebecca Faust
-+ **Email**: [rjfaust@email.arizona.edu](mailto:rjfaust@email.arizona.edu)
++ **Email**: [rjfaust+sum20csc245@email.arizona.edu](mailto:rjfaust+sum20csc245@email.arizona.edu)
 + [Piazza](https://piazza.com/home/summer2020/csc245/home)
 + [Grades](https://www.gradescope.com/courses/124297)
 + [Syllabus]({% link _syllabi/csc245Summer20Syllabus.md %})
@@ -26,7 +26,10 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 ### Lectures
 
 + Week 1: Syllabus, Math Review, Logic
-+ Week 2: 
+  - Handouts:
+    + 
+  - Homework 1
++ Week 2:
 + Week 3
 + Week 4
 + Week 5
