@@ -27,11 +27,9 @@ MATH 111, MATH 112, grade of B or better in CSC 127B or CSC 227.
 + **Instructor**: Rebecca Faust
 + **Email**: [rjfaust+sum20csc245@email.arizona.edu](mailto:rjfaust+sum20csc245@email.arizona.edu)
 + **Office Hours**: Monday 10-12am, Thursday 2-4pm (additional hours by appointment)
-
 + **TA's**: Prithula Hridi & Caroline Hyland
 + **TA Email**: [hridi@email.arizona.edu](mailto:hridi@email.arizona.edu) & [cchyland@email.arizona.edu](mailto:cchyland@email.arizona.edu)
 + **TA Office Hours**: TBD
-
 + **Course Webpage**: [https://rjfaust.github.io/teaching/summer2020/csc245](https://rjfaust.github.io/teaching/summer2020/csc245)
 
 
