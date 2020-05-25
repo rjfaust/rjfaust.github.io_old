@@ -205,11 +205,11 @@ a, a:hover, a:focus {
     color: #fff;
     background: #6d7fcc;
 }
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #6d7fcc;
-}
+// ul ul a {
+//     font-size: 0.9em !important;
+//     // padding-left: 30px !important;
+//     background: #6d7fcc;
+// }
 .social-icons a {
   display: inline-block;
   height: 3rem;
@@ -252,7 +252,7 @@ ul ul a {
 	  position: fixed;
 	  display:inline;
   }
-  .page {
+  .page .class{
     background-image: none;
 	padding-top:0;
 	min-height:0;
@@ -488,7 +488,4 @@ width: 90%;
   background-color:rgb(168, 208, 230);
   color: blue;
 
-}
-.classPage td{
-  padding-right:10px
 }
