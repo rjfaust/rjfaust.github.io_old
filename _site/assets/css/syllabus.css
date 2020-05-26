@@ -33,6 +33,9 @@ th {
 li li li {
   font-size: .9em; }
 
+li {
+  font-size: .95em; }
+
 @media only screen and (max-width: 860px) {
   .classPage {
     background-image: none;
