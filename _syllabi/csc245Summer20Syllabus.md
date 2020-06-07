@@ -31,7 +31,7 @@ MATH 111, MATH 112, grade of B or better in CSC 127B or CSC 227.
 + **TA Email**: [hridi@email.arizona.edu](mailto:hridi@email.arizona.edu) & [cchyland@email.arizona.edu](mailto:cchyland@email.arizona.edu)
 + **TA Office Hours**:   
   - Caroline: M & T 3-5pm, ([zoom link](https://arizona.zoom.us/j/7709005002?pwd=amhJK1Q2MytRRmM1TCs4UER4ZHIzZz09))
-  - Prithula: T 2-3pm ([zoom link](https://arizona.zoom.us/j/94828310117)), W 3-5pm  ([zoom link](https://arizona.zoom.us/j/91789389329)), Th & F 12-1pm ([zoom link](https://arizona.zoom.us/j/99557218170)).
+  - Prithula: T 2-3pm ([zoom link](https://arizona.zoom.us/j/94828310117)), W 4-5pm  ([zoom link](https://arizona.zoom.us/j/91789389329)), Th & F 12-1pm ([zoom link](https://arizona.zoom.us/j/99557218170)).
 + **Course Webpage**: [https://rjfaust.github.io/teaching/summer2020/csc245](https://rjfaust.github.io/teaching/summer2020/csc245)
 
 
