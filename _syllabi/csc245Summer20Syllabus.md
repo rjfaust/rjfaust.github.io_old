@@ -36,7 +36,7 @@ MATH 111, MATH 112, grade of B or better in CSC 127B or CSC 227.
 
 
 
-My office hours will be held through google hangouts. During my office hours, I will be on hangouts with my university email (rjfaust@email.arizona.edu).  If you want to "attend" office hours, invite me into a chat and we can discuss your questions there or start a video call.  In the event that I am already on a call with someone else, I will let you know where you are in the queue of people waiting to chat with me and send you a message once it is your turn.
+<!-- My office hours will be held through google hangouts. During my office hours, I will be on hangouts with my university email (rjfaust@email.arizona.edu).  If you want to "attend" office hours, invite me into a chat and we can discuss your questions there or start a video call.  In the event that I am already on a call with someone else, I will let you know where you are in the queue of people waiting to chat with me and send you a message once it is your turn. -->
 
 <!-- Instructor name, office location, telephone number, e-mail address
 Office Hours/“Open Door Policy”
@@ -130,7 +130,7 @@ Below is the planned schedule for the semester.  However, it is subject to chang
 |     | **Th 07/2**|                   | Homework 5 (practice)| Homework 4 (5pm) |
 | 5   | M 07/06  | 7 (cont'd), 8       |               |                  |
 |     | T 07/07  |                     | NO QUIZ       |                  |
-|     | Th 07/10  | Midterm            |               |                  |
+|     | Th 07/9  | Midterm            |               |                  |
 |     | F 07/10  |                     | Homework 6    | Midterm (5pm)    |
 | 6   | M 07/13  | 9, 10               |               |                  |
 |     | T 07/14  |                     | Quiz 4        | Quiz 4 (midnight)|
@@ -162,7 +162,7 @@ Below is a projected schedule of topics and assignments.  Assignments will be re
 |Homework 4| Topics 4 & 5 | June 26, 2020| July 2, 2020|
 |Quiz 3| Topic 4 & 5| June 30, 2020| June 30, 2020|
 |Homework 5| Topic 6 | July 2, 2020| (Practice)|
-|Midterm 1| Topics 1-5| July 9, 2020| July 9, 2020|
+|Midterm | Topics 1-5| July 9, 2020| July 10, 2020|
 |Homework 6| Topic 7 & 8 | July 10, 2020| July 17, 2020|
 |Quiz 4| Topic 6, 7 & 8 | July 14, 2020| July 14, 2020|
 |Homework 7| Topic 9 & 10 | July 17, 2020| July 24, 2020|
@@ -202,7 +202,7 @@ Homework assignments designed to give you hands on experience with topics in pre
 
 
 #### Midterm (15% of final grade)
-There will be one midterm on July 9th.  It will be "take home" and as such will be open book but ***not*** open internet. It will be released on Thursday and must be completed by midnight that same day. It will be written to take 60-90 minutes and will cover material up to the week prior. Note, it is intended to be closed internet so I ask that you not use the internet when completing it.  If we determine that you have used the internet, steep penalties will be applied (See the section on Academic Dishonesty).
+There will be one midterm on July 9th.  It will be "take home" and as such will be open book but ***not*** open internet. It will be released on Thursday and must be completed by 5pm the following day. It will be written to take 60-90 minutes and will cover material up to the week prior. Note, it is intended to be closed internet so I ask that you not use the internet when completing it.  If we determine that you have used the internet, steep penalties will be applied (See the section on Academic Dishonesty).
 
 + *Regrade Requests* If you feel your exam was graded incorrectly, you may submit a request for me to regrade it within a week of receiving the graded exam.  In the request you must specify in detail what you think was misgraded.  However, when I receive a regrade request, I will regrade __**the entire exam**__.  This could lead to you getting a lower grade than you originally had if there were other grading errors in your favor so carefully look over your exam before submitting a regrade request.
 
@@ -305,9 +305,9 @@ The Department of Computer Science is committed to providing and maintaining a s
 
 #### Classroom Behavior Policy
 To foster a positive learning environment, students and instructors have a shared responsibility. We want a safe, welcoming, and inclusive environment where all of us feel comfortable with each other and where we can challenge ourselves to succeed. To that end, our focus is on the tasks at hand and not on extraneous activities (e.g., texting, chatting, reading a newspaper, making phone calls, web surfing, etc.).
-Additional recommendations depending on instructor preferences: Students are asked to refrain from disruptive conversations with people sitting around them during lecture. Students observed engaging in disruptive activity will be asked to cease this behavior. Those who continue to disrupt the class will be asked to leave lecture or discussion and may be reported to the Dean of Students.
+<!-- Additional recommendations depending on instructor preferences: Students are asked to refrain from disruptive conversations with people sitting around them during lecture. Students observed engaging in disruptive activity will be asked to cease this behavior. Those who continue to disrupt the class will be asked to leave lecture or discussion and may be reported to the Dean of Students.
 Alternate language for those who want to restrict computers and laptops to an area of the classroom: Some learning styles are best served by using personal electronics, such as laptops and iPads. These devices can be distracting to other learners. Therefore, students who prefer to use electronic devices for note-taking during lecture should use one side of the classroom.
-Alternate recommended language for those who do not wish to permit laptops in the classroom: The use of personal electronics such as laptops, iPads, and other such mobile devices is distracting to the other students and the instructor. Their use can degrade the learning environment. Therefore, students are not permitted to use these devices during the class period.
+Alternate recommended language for those who do not wish to permit laptops in the classroom: The use of personal electronics such as laptops, iPads, and other such mobile devices is distracting to the other students and the instructor. Their use can degrade the learning environment. Therefore, students are not permitted to use these devices during the class period. -->
 
 #### Pronoun Preference
 This course affirms people of all gender expressions and gender identities. If you prefer to be called a different name than what is on the class roster, please let me know. Feel free to correct instructors on your preferred gender pronoun. If you have any questions or concerns, please do not hesitate to contact me directly in class or via email (instructor email). If you wish to change your preferred name or pronoun in the UAccess system, please use the following guidelines:
@@ -326,7 +326,7 @@ The Disability Resources Offices provides guidelines regarding accessibility and
 
 #### UA Nondiscrimination and Anti-harassment Policy
 The University is committed to creating and maintaining an environment free of discrimination; see [http://policy.arizona.edu/human-resources/nondiscrimination-and-anti-harassment-policy](http://policy.arizona.edu/human-resources/nondiscrimination-and-anti-harassment-policy)
-Recommended language, if applicable: Our classroom is a place where everyone is encouraged to express well-formed opinions and their reasons for those opinions. We also want to create a tolerant and open environment where such opinions can be expressed without resorting to bullying or discrimination of others.
+<!-- Recommended language, if applicable: Our classroom is a place where everyone is encouraged to express well-formed opinions and their reasons for those opinions. We also want to create a tolerant and open environment where such opinions can be expressed without resorting to bullying or discrimination of others. -->
 
 #### Additional Resources for Students
 UA Academic policies and procedures are available at [http://catalog.arizona.edu/policies](http://catalog.arizona.edu/policies)
