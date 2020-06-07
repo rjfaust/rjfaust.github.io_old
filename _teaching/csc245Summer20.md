@@ -18,17 +18,28 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 + **Instructor**: Rebecca Faust
 + **Email**: [rjfaust+sum20csc245@email.arizona.edu](mailto:rjfaust+sum20csc245@email.arizona.edu)
 + [Piazza](https://piazza.com/home/summer2020/csc245/home)
-+ [Grades](https://www.gradescope.com/courses/124297)
++ [Gradescope](https://www.gradescope.com/courses/124297)
 + [Syllabus]({% link _syllabi/csc245Summer20Syllabus.md %})
++ **TA's**:  Prithula Hridi & Caroline Hyland
++ **TA Emails**: [hridi@email.arizona.edu](mailto:hridi@email.arizona.edu) & [cchyland@email.arizona.edu](mailto:cchyland@email.arizona.edu)
++ **Office Hours**: (all office hours are in Tucson time (MST))
+  - Rebecca: M 10am-12pm, Th 2-4pm. Additional hours by appointment. These will be held through google hangouts. To attend, invite me to a chat on google hangouts and we can chat there or set up a video (or add you to the queue if I am already meeting with another student).  
+  - Caroline: M & T 3-5pm, ([zoom link](https://arizona.zoom.us/j/7709005002?pwd=amhJK1Q2MytRRmM1TCs4UER4ZHIzZz09))
+  - Prithula: T 2-3pm ([zoom link](https://arizona.zoom.us/j/94828310117)), W 3-5pm  ([zoom link](https://arizona.zoom.us/j/91789389329)), Th & F 12-1pm ([zoom link](https://arizona.zoom.us/j/99557218170)).
 
+### Latex Resources
++ (Coming Soon)
 
-
-### Lectures
+### Course Schedule
 
 + Week 1: Syllabus, Math Review, Logic
-  - Handouts:
-    + 
-  - Homework 1
+  + Handouts:
+    + [Math Review Summary]({{ site.baseurl }}{% link /files/csc245/Math_Review_Summary.pdf %})
+    + [Math Review (full)]({{ site.baseurl }}{% link /files/csc245/MathReview.pdf %})
+  + Homework 1:
+    + Questions
+    + Latex template
+  + Lectures:
 + Week 2:
 + Week 3
 + Week 4
@@ -37,8 +48,6 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 + Week 7
 + Week 8
 + Week 9
-
-### Course Materials
 
 
 

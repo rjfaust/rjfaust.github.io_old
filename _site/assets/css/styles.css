@@ -385,7 +385,7 @@ a, a:hover, a:focus {
   border-width: 1px;
   border-bottom-style: solid;
   min-height: 100vh;
-  background-color: #a8d0e6;
+  background-color: white;
   opacity: 80%;
   position: relative;
   width: 100%;
@@ -397,5 +397,5 @@ a, a:hover, a:focus {
 .classPage a {
   padding-left: 0px;
   margin-left: 0px;
-  background-color: #a8d0e6;
+  background-color: white;
   color: blue; }

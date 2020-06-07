@@ -26,15 +26,17 @@ MATH 111, MATH 112, grade of B or better in CSC 127B or CSC 227.
 #### Instructor and Contact Information
 + **Instructor**: Rebecca Faust
 + **Email**: [rjfaust+sum20csc245@email.arizona.edu](mailto:rjfaust+sum20csc245@email.arizona.edu)
-+ **Office Hours**: Monday 10-12am, Thursday 2-4pm (additional hours by appointment)
++ **Office Hours**: Monday 10-12am, Thursday 2-4pm (additional hours by appointment). My office hours will be held through google hangouts. During my specified office hours, I will be on hangouts with my university email (rjfaust@email.arizona.edu).  If you want to "attend" office hours, invite me into a chat and we can discuss your questions there or start a video call.  In the event that I am already on a call with someone else, I will let you know where you are in the queue of people waiting to chat with me and send you a message once it is your turn.
 + **TA's**: Prithula Hridi & Caroline Hyland
 + **TA Email**: [hridi@email.arizona.edu](mailto:hridi@email.arizona.edu) & [cchyland@email.arizona.edu](mailto:cchyland@email.arizona.edu)
-+ **TA Office Hours**: TBD
++ **TA Office Hours**:   
+  - Caroline: M & T 3-5pm, ([zoom link](https://arizona.zoom.us/j/7709005002?pwd=amhJK1Q2MytRRmM1TCs4UER4ZHIzZz09))
+  - Prithula: T 2-3pm ([zoom link](https://arizona.zoom.us/j/94828310117)), W 3-5pm  ([zoom link](https://arizona.zoom.us/j/91789389329)), Th & F 12-1pm ([zoom link](https://arizona.zoom.us/j/99557218170)).
 + **Course Webpage**: [https://rjfaust.github.io/teaching/summer2020/csc245](https://rjfaust.github.io/teaching/summer2020/csc245)
 
 
 
-Office hours will be held through google hangouts. During my office hours, I will be on hangouts with my university email (rjfaust@email.arizona.edu).  If you want to "attend" office hours, invite me into a chat and we can discuss your questions there or start a video call.  In the event that I am already on a call with someone else, I will let you know where you are in the queue of people waiting to chat with me and send you a message once it is your turn.
+My office hours will be held through google hangouts. During my office hours, I will be on hangouts with my university email (rjfaust@email.arizona.edu).  If you want to "attend" office hours, invite me into a chat and we can discuss your questions there or start a video call.  In the event that I am already on a call with someone else, I will let you know where you are in the queue of people waiting to chat with me and send you a message once it is your turn.
 
 <!-- Instructor name, office location, telephone number, e-mail address
 Office Hours/“Open Door Policy”
