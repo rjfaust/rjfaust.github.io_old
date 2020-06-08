@@ -28,7 +28,8 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
   - Prithula: T 2-3pm ([zoom link](https://arizona.zoom.us/j/94828310117)), W 4-5pm  ([zoom link](https://arizona.zoom.us/j/91789389329)), Th & F 12-1pm ([zoom link](https://arizona.zoom.us/j/99557218170)).
 
 ### Latex Resources
-+ (Coming Soon)
++ [Getting started with Latex]({{ site.baseurl }}{% link /files/csc245/Latex_Tutorial.pdf %})
++ [Dr. McCann's Latex Resources](http://u.arizona.edu/~mccann/classes/latex.html)
 
 ### Course Schedule
 
@@ -44,7 +45,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Introduction]({{ site.baseurl }}{% link /files/csc245/Logic.pdf %})
     + [Logic]({{ site.baseurl }}{% link /files/csc245/Intro.pdf %})
 
-+ Week 2:
++ Week 2
 + Week 3
 + Week 4
 + Week 5
@@ -56,7 +57,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 
 ### Assignments
 
-+ Assignment 1
++ [Assignment 1]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_1.pdf %})
 + Assignment 2
 + Assignment 3
 + Assignment 4 (practice)
