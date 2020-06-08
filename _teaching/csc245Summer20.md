@@ -24,7 +24,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 + **TA Emails**: [hridi@email.arizona.edu](mailto:hridi@email.arizona.edu) & [cchyland@email.arizona.edu](mailto:cchyland@email.arizona.edu)
 + **Office Hours**: (all office hours are in Tucson time (MST))
   - Rebecca: M 10am-12pm, Th 2-4pm. Additional hours by appointment. These will be held through google hangouts. To attend, invite me to a chat on google hangouts and we can chat there or set up a video (or add you to the queue if I am already meeting with another student).  
-  - Caroline: M & T 3-5pm, ([zoom link](https://arizona.zoom.us/j/7709005002?pwd=amhJK1Q2MytRRmM1TCs4UER4ZHIzZz09))
+  - Caroline: M & T 3-5pm, ([zoom link](https://arizona.zoom.us/j/96599442344))
   - Prithula: T 2-3pm ([zoom link](https://arizona.zoom.us/j/94828310117)), W 4-5pm  ([zoom link](https://arizona.zoom.us/j/91789389329)), Th & F 12-1pm ([zoom link](https://arizona.zoom.us/j/99557218170)).
 
 ### Latex Resources
@@ -37,9 +37,13 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Math Review Summary]({{ site.baseurl }}{% link /files/csc245/Math_Review_Summary.pdf %})
     + [Math Review (full)]({{ site.baseurl }}{% link /files/csc245/MathReview.pdf %})
   + Homework 1:
-    + Questions
-    + Latex template
-  + Lectures:
+    + [Homework 1 Questions]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_1.pdf %})
+    <!-- + Latex Template -->
+    + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Homework1_template.zip %})
+  + Lecture Slides:
+    + [Introduction]({{ site.baseurl }}{% link /files/csc245/Logic.pdf %})
+    + [Logic]({{ site.baseurl }}{% link /files/csc245/Intro.pdf %})
+
 + Week 2:
 + Week 3
 + Week 4
@@ -48,7 +52,6 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 + Week 7
 + Week 8
 + Week 9
-
 
 
 ### Assignments
