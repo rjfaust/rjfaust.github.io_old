@@ -46,10 +46,12 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Logic]({{ site.baseurl }}{% link /files/csc245/Logic.pdf %})
 
 + Week 2
+  + Handouts:
+    + [Equivalence Tables from Logic Slides]({{ site.baseurl }}{% link /files/csc245/equivalences.pdf %})
   + Homework 2:
     + [Homework 2 Questions]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_2.pdf %})
     <!-- + Latex Template -->
-    + Latex Template (coming soon)
+    + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Homework2_template.zip %})
 + Week 3
 + Week 4
 + Week 5
