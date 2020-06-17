@@ -54,7 +54,10 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Homework2_template.zip %})
   + [Quiz 1]({{ site.baseurl }}{% link /files/csc245/CSc245_Quiz_1.pdf %})
     + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Quiz1_template.zip %})
-
+  + Lecture Slides"
+    + [Quantification]({{ site.baseurl }}{% link /files/csc245/Quantifications.pdf %})
+    + [Quantification Examples]({{ site.baseurl }}{% link /files/csc245/Quantification_Examples.pdf %})
+    + [Arguments]({{ site.baseurl }}{% link /files/csc245/Arguments.pdf %})
 + Week 3
 + Week 4
 + Week 5
@@ -62,7 +65,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 + Week 7
 + Week 8
 + Week 9
-
+Z
 
 ### Assignments
 
