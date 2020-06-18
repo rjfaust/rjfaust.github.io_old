@@ -44,6 +44,8 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
   + Lecture Slides:
     + [Introduction]({{ site.baseurl }}{% link /files/csc245/Intro.pdf %})
     + [Logic]({{ site.baseurl }}{% link /files/csc245/Logic.pdf %})
+  + Links to Raw Lecture videos
+    + [Syllabus](https://youtu.be/LbH0H3iMQPg), [Logic 1](https://youtu.be/QG71fh2ZQAk), [Logic 2](https://youtu.be/T3yElOSoiC0), [Logic 3](https://youtu.be/miKQPCMcozU)
 
 + Week 2
   + Handouts:
@@ -65,7 +67,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 + Week 7
 + Week 8
 + Week 9
-Z
+
 
 ### Assignments
 
