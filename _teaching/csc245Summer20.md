@@ -66,6 +66,9 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Homework3_template.zip %})
   + [Quiz 2]({{ site.baseurl }}{% link /files/csc245/CSc245_Quiz_2.pdf %})
     + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Quiz2_template.zip %})
+  + Lecture Slides
+    + [Introduction to Proofs]({{ site.baseurl }}{% link /files/csc245/Proofs.pdf %})
+    + [Proof Examples]({{ site.baseurl }}{% link /files/csc245/Proof_Examples.pdf %})
 + Week 4
 + Week 5
 + Week 6
