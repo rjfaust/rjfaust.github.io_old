@@ -70,6 +70,10 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Introduction to Proofs]({{ site.baseurl }}{% link /files/csc245/Proofs.pdf %})
     + [Proof Examples]({{ site.baseurl }}{% link /files/csc245/Proof_Examples.pdf %})
 + Week 4
+  + Homework 4
+    + [Homework 4 Questions]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_4.pdf %})
+    + Latex Template - coming soon
+
 + Week 5
 + Week 6
 + Week 7
@@ -81,11 +85,11 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 
 + [Assignment 1]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_1.pdf %})
 + [Assignment 2]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_2.pdf %})
-+ Assignment 3
-+ Assignment 4 (practice)
-+ Assignment 5
++ [Assignment 3]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_3.pdf %})
++ [Assignment 4]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_4.pdf %})
++ Assignment 5 (practice)
 + Assignment 6
-+ Assignment 7 (practice)
++ Assignment 7
 + Assignment 8
 + Assignment 9
 + Exam Review (practice)
