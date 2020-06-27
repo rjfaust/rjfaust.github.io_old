@@ -41,6 +41,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Homework 1 Questions]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_1.pdf %})
     <!-- + Latex Template -->
     + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Homework1_template.zip %})
+    + [Solutions]({{ site.baseurl }}{% link /files/csc245/Homework1_Solutions.pdf %})
   + Lecture Slides:
     + [Introduction]({{ site.baseurl }}{% link /files/csc245/Intro.pdf %})
     + [Logic]({{ site.baseurl }}{% link /files/csc245/Logic.pdf %})
