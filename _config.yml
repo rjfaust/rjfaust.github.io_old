@@ -1,3 +1,6 @@
+plugins:
+  - jekyll-analytics
+
 jekyll_analytics:
   GoogleAnalytics:          # Add, if you want to track with Google Analytics
     id: UA-141790565-1         # Required - replace with your tracking id
