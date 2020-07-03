@@ -82,6 +82,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Matrices]({{ site.baseurl }}{% link /files/csc245/Matrices.pdf %})
 
 + Week 5
+  + [Practice Problems]({{ site.baseurl }}{% link /files/csc245/Practice_Problems_1.pdf %})
 + Week 6
 + Week 7
 + Week 8
