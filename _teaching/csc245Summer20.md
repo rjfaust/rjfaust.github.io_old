@@ -83,6 +83,10 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 
 + Week 5
   + [Practice Problems]({{ site.baseurl }}{% link /files/csc245/Practice_Problems_1.pdf %})
+  + [Midterm]({{ site.baseurl }}{% link /files/csc245/CSc_245_Midterm.pdf %})
+    + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Midterm_template.zip %})
+  + Lecture Slides
+    + [Relations]({{ site.baseurl }}{% link /files/csc245/Relations.pdf %})
 + Week 6
 + Week 7
 + Week 8
@@ -95,9 +99,9 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 + [Assignment 2]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_2.pdf %})
 + [Assignment 3]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_3.pdf %})
 + [Assignment 4]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_4.pdf %})
-+ Assignment 5 (practice)
++ [Practice Assignment]({{ site.baseurl }}{% link /files/csc245/Practice_Problems_1.pdf %})
++ Assignment 5
 + Assignment 6
 + Assignment 7
 + Assignment 8
-+ Assignment 9
 + Exam Review (practice)
