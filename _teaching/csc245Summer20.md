@@ -96,7 +96,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Quiz4_template.zip %})
   + Lecture Slides
     + [Functions]({{ site.baseurl }}{% link /files/csc245/Functions.pdf %})
-    
+    + [Integers]({{ site.baseurl }}{% link /files/csc245/Integers.pdf %})
 + Week 7
 + Week 8
 + Week 9
