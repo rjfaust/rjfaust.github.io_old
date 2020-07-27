@@ -110,6 +110,8 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 + Week 8
   + Homework 7
     + [Homework 7 Questions]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_7.pdf %})
+  + [Quiz 5]({{ site.baseurl }}{% link /files/csc245/CSc245_Quiz_6.pdf %})
+    + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Quiz6_template.zip %})
     <!-- + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Homework6_template.zip %}) -->
 + Week 9
 + Week 10
