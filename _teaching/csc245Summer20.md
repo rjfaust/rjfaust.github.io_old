@@ -118,6 +118,8 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
   + Lecture Slides
       + [Counting]({{ site.baseurl }}{% link /files/csc245/Counting.pdf %})  
 + Week 9
+  + Homework 8
+    + [Homework 8 Questions]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_8.pdf %})
 + Week 10
 
 
