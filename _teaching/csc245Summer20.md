@@ -94,7 +94,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Homework 5 Questions]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_5.pdf %})
     + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Homework5_template.zip %})
   + [Quiz 4]({{ site.baseurl }}{% link /files/csc245/CSc245_Quiz_4.pdf %})
-    + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Quiz4_template.zip %})
+    + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Quiz4_template.zip %}), [Solutions]({{ site.baseurl }}{% link /files/csc245/Quiz_4_solutions.pdf %})
   + Lecture Slides
     + [Functions]({{ site.baseurl }}{% link /files/csc245/Functions.pdf %})
     + [Integers]({{ site.baseurl }}{% link /files/csc245/Integers.pdf %})
@@ -103,7 +103,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Homework 6 Questions]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_6.pdf %})
     + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Homework6_template.zip %})
   + [Quiz 5]({{ site.baseurl }}{% link /files/csc245/CSc245_Quiz_5.pdf %})
-    + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Quiz5_template.zip %})
+    + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Quiz5_template.zip %}), [Solutions]({{ site.baseurl }}{% link /files/csc245/Quiz_5_solutions.pdf %})
   + Lecture Slides
     + [Sequences]({{ site.baseurl }}{% link /files/csc245/Sequences.pdf %})
     + [Induction]({{ site.baseurl }}{% link /files/csc245/Induction.pdf %})
@@ -113,7 +113,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Homework7_template.zip %})
 
   + [Quiz 6]({{ site.baseurl }}{% link /files/csc245/CSc245_Quiz_6.pdf %})
-    + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Quiz6_template.zip %})
+    + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Quiz6_template.zip %}), [Solutions]({{ site.baseurl }}{% link /files/csc245/Quiz_6_solutions.pdf %})
     <!-- + [Latex Template]({{ site.baseurl }}{% link /files/csc245/Homework6_template.zip %}) -->
   + Lecture Slides
       + [Counting]({{ site.baseurl }}{% link /files/csc245/Counting.pdf %})  
