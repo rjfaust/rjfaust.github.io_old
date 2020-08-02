@@ -134,5 +134,5 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
 + [Assignment 5]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_5.pdf %})
 + [Assignment 6]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_6.pdf %})
 + [Assignment 7]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_7.pdf %})
-+ Assignment 8
++ [Assignment 8]({{ site.baseurl }}{% link /files/csc245/CSc245_Homework_8.pdf %})
 + Exam Review (practice)
