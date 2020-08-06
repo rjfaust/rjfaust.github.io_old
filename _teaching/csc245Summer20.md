@@ -130,6 +130,7 @@ This is the course website for CSc 245, Introduction to Discrete Structures, for
     + [Finite Probability]({{ site.baseurl }}{% link /files/csc245/FiniteProbability.pdf %})   
 
 + Week 10
+  + [Final Review Questions]({{ site.baseurl }}{% link /files/csc245/CSc245_Final_Review_Questions.pdf %}) 
 
 
 ### Assignments
