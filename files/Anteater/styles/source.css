@@ -1,0 +1,27 @@
+#source {
+  width: 50%;
+  display: block;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  white-space: nowrap;
+  position: relative;
+  background-color: transparent;
+
+}
+
+
+#varDrag{
+    background-color:lightblue;
+    display:none;
+    position:absolute;
+    top:0px;
+    left:0px;
+    z-index: 3;
+    min-width: 20px;
+    font-family: monospace;
+    text-align:center;
+}
+
+#execution,#plot{
+    max-height: 50%;
+}
