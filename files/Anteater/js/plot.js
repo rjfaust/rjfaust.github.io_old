@@ -14,6 +14,7 @@ var axes = []
 var plotInfo = {
     type: "histogram",
     multiple: false,
+    axes : [],
     group_on: []
 }
 
@@ -27,10 +28,10 @@ var multiPlotSize = {h:400, w: 400 }
 var groupings = []
 var grouping_types = {b:"boolean", s:"string", st:"structure", c:"custom"}
 var nonNumColors = {nan:"green", inf:"blue", "-inf":"orange","Anteater:Expression_Error":"red"}
-var scales = ["linear","symmetric log"]
+var scales = ["Linear","Symmetric Log"]
 var scaleInds = [0,0]
-//var group_visibility = {}
-
+var vegaView = null;
+var selectedPoints = []
 var maxPlots = 10;
 
 function init_plot(){
@@ -43,7 +44,7 @@ function init_plot(){
     }
 
     d3.select("#plotOptNav")
-	.style("height",plotHeight+"px")
+	   .style("height",plotHeight+"px")
 
     d3.select("#varOpts")
         .on("change",function(){
@@ -68,8 +69,18 @@ function init_plot(){
             d3.select(this).style("opacity", 1)
             .classed("plotType",true);
 
+            if((plotInfo.type == plot_types.h || plotInfo.type == plot_types.b) && d==plot_types.s){
+              var oldX = scaleInds[0]
+              scaleInds[0] = scaleInds[1];
+              scaleInds[1] = oldX;
+            }
+            else if(plotInfo.type == plot_types.s &&(d == plot_types.h || d== plot_types.b)){
+              var oldX = scaleInds[0]
+              scaleInds[0] = scaleInds[1];
+              scaleInds[1] = oldX;
+            }
+
             plotInfo.type = d;
-//            var v= shownVars[0]
             var plotInd = 0;
 
             if(shownVars.length > 1){
@@ -90,25 +101,13 @@ function init_plot(){
             if(d==plot_types.h && get_var_type(plotInd) == "string"){
                 plotInfo.type = plot_types.b;
             }
-//            connectByTime = (plotType === "curve");
             plot(true);
 
         });
 
-    plotSVG = d3.select("#plot")
-    .append("div")
-    .style("width", plotWidth + plotMargin.right + plotMargin.left + "px")
-    .style("height", plotHeight + plotMargin.top + plotMargin.bottom + "px")
-    .style("overflow-y", "scroll")
-    .style("position","relative")
-    .append("svg")
-    .attr("viewBox","0 0   "+ (plotWidth + plotMargin.right + plotMargin.left)+ " " + (plotHeight + plotMargin.top + plotMargin.bottom) )
-//    .attr("width", plotWidth + plotMargin.right + plotMargin.left)
-//    .attr("height", plotHeight + plotMargin.top + plotMargin.bottom)
-
 
     multiInfo = {nPlots:1,nCols:1,nRows:1};
-    create_axes(multiInfo);
+    // create_axes(multiInfo);
 
     d3.select("#axisMenu")
     .on('mouseleave',function(){
@@ -121,6 +120,19 @@ function init_plot(){
         d3.select(this)
         .style("visibility","hidden")
     })
+
+    d3.select("#plotView")
+    .on("contextmenu",function(e){
+        d3.event.preventDefault();
+        cm = d3.select("#plotCMenu")
+
+        xCoord = d3.event.pageX
+        yCoord = d3.event.pageY
+        cm.style("visibility","visible")
+        cm.style("left",(xCoord-10)+"px")
+        cm.style("top",(yCoord-10)+"px")
+
+    })
 }
 
 function change_rad(d){
@@ -128,10 +140,304 @@ function change_rad(d){
             d3.selectAll(".val_rad").property("checked",false)
             d3.select(d).property("checked",true)
         }
-    }
+}
 
-function show_var_ops(variable, lineno, axis){
-    var txt = '<div title="Value Options">Please select which value to add to the plot:<br><input id="radio_0" '
+// function update_plot_opts(){
+//   var txt = '<div title="Plot Options">Plot Options: '
+//
+//   var options = []
+//   shownVars.forEach(function(v,i){
+//     var name = shownVars[i]
+//     var id = "v_"+i
+//     if(shownVars_exprs[i]!=null){
+//       name = shownVars_exprs[i]
+//       id+="_c"
+//     }
+//     options.push({"name":name,"id":id})
+//   })
+//   // if(plotInfo.type== plot_types.s || plotInfo.type== plot_types.c  ){
+//   //   options.push({"name":"timestamp","id":"timestamp"})
+//   // }
+//   options.push({"name":"delete","id":"delete"})
+//
+//   shownVars.forEach(function(v,i){
+//     txt+="<br>"
+//     txt+="<label>Axis "+ i
+//     if (i==0 && plotInfo.type!=plot_types.pc && !(shownVars.length == 1 && plotInfo.type==plot_types.s)){
+//       txt+=" (x Axis)"
+//     }
+//     else if ((i==1 && plotInfo.type!=plot_types.pc)||(i==0 && shownVars.length ==1 && plotInfo.type == plot_types.s)){
+//       txt+=" (y Axis)"
+//     }
+//     txt+="</label><label style=\"padding-left:10px\"> Value: </label>"
+//     txt += "<select id=\"v"+i+"\" class=\"axisOpts\" >"
+//     options.forEach(function(o,j){
+//         txt+="<option value=\""+o.id+"\""
+//         if(j==i){
+//           txt+=" selected "
+//         }
+//         txt+=">"+o.name+"</option>"
+//     })
+//     txt += "</select>"
+//     txt+="<label style=\"padding-left:10px\">Scale: </label>"
+//     txt+="<select id = \"scale"+i+"\">"
+//     scales.forEach(function(s,j){
+//       txt+="<option value=\""+j+"\""
+//       if(scaleInds[i]==j){
+//         txt+=" selected "
+//       }
+//       txt+=">"+s+"</option>"
+//
+//     })
+//     txt+="</select>"
+//
+//   });
+//
+//
+//   txt += '<br></div>';
+//
+//   var popUpList = $(txt);
+//
+//   popUpList.dialog({
+//       buttons:{
+//           Submit: function(){
+//
+//             var newShown = []
+//             var newScale = []
+//             var newShown_expr = []
+//             shownVars.forEach(function(v,i){
+//                 var selectNode = d3.select("#v"+i).node()
+//                 var scaleNode = d3.select("#scale"+i).node()
+//
+//                 var val = selectNode.options[selectNode.selectedIndex].value
+//
+//                 if (val.search("_c")>-1){
+//                   custom = true;
+//                 }
+//                 if (val!="delete"){
+//                   var ind = val[2];
+//                   var custom = false;
+//                   newShown.push(shownVars[ind])
+//                   if(custom){
+//                     newShown_expr = shownVars_exprs[ind]
+//                   }
+//                   else{
+//                     newShown_expr = null
+//                   }
+//                   newScale.push(parseInt(scaleNode.options[scaleNode.selectedIndex].value))
+//                 }
+//
+//             })
+//             shownVars = newShown;
+//             scaleInds = newScale;
+//             shownVars_exprs = newShown_expr;
+//             plot();
+//             // var e = document.getElementById("ddlViewBy");
+//             // var strUser = e.options[e.selectedIndex].text;
+//
+//
+//               // var expr = d3.selectAll(".val_rad")
+//               // .filter(function(d,i){
+//               //     return this.checked
+//               // }).attr('id')
+//               //
+//               // var ind = parseInt(expr.substring(6,expr.length))
+//               //
+//               // if (ind >0){
+//               //     cExpr = tracked[tracked_ind].custom[ind-1]
+//               // }
+//               // else{
+//               //     cExpr = null
+//               // }
+//               //
+//               // update_plot_vars(variable,cExpr,axis);
+//               //
+//               // $( this ).dialog('destroy').remove();
+//           }
+//       },
+//       width:500
+//   });
+//
+// }
+
+function update_plot_opts(){
+  var txt = '<div title="Plot Options">Plot Options: <br/>'
+  if(plotInfo.type==plot_types.s && shownVars.length == 1){
+        txt+="<label>x Axis - </label>"
+        txt+="<label style=\"padding-left:10px\"> Value: </label>"
+        txt += "<select disabled=true class=\"axisOpts\" >"
+        txt+= "<option value = \"timestamp\">timestamp </option>"
+        txt+="</select><br/>"
+
+
+        var name = shownVars[0]
+        if (shownVars_exprs[0] != null){
+          name = shownVars_exprs[0]
+        }
+
+        txt+="<label>y Axis - </label>"
+        txt+="<label style=\"padding-left:10px\"> Value: </label>"
+        txt += "<select id=\"v0\" class=\"axisOpts\" >"
+        txt+= "<option id=\"opt_0\" value = 0 >"+name+" </option>"
+        txt+= "<option id=\"opt_delete\" value = \"delete\" > Delete </option>"
+        txt+="</select>"
+        txt+="<label style=\"padding-left:10px\"> Scale: </label>"
+        txt += "<select id=\"scale_0\" class=\"scaleOpts\" >"
+        scales.forEach(function(s,j){
+          txt+="<option id=\"opt_"+j+"\" value = "+j
+          if(scaleInds[1]==j){
+            txt+=" selected "
+          }
+          txt+= ">"+scales[j]+" </option>"
+        })
+
+        // txt+= "<option id=\"opt_0\" value = 0 >"+scales[0]+" </option>"
+        // txt+= "<option id=\"opt_delete\" value = 1 > "+scales[1]+" </option>"
+        txt+="</select>"
+  }
+  else if(plotInfo.type==plot_types.b || plotInfo.type == plot_types.h){
+        var name = shownVars[0]
+        if (shownVars_exprs[0] != null){
+          name = shownVars_exprs[0]
+        }
+
+        txt+="<label>x Axis - </label>"
+        txt+="<label style=\"padding-left:10px\"> Value: </label>"
+        txt += "<select id=\"v0\" class=\"axisOpts\" >"
+        txt+= "<option id=\"opt_0\" value = 0 >"+name+" </option>"
+        txt+= "<option id=\"opt_delete\" value = \"delete\" > Delete </option>"
+        txt+="</select>"
+        txt+="<label style=\"padding-left:10px\"> Scale: </label>"
+        txt += "<select id=\"scale_0\" class=\"scaleOpts\" >"
+        scales.forEach(function(s,j){
+          txt+="<option id=\"opt_"+j+"\" value = "+j
+          if(scaleInds[0]==j){
+            txt+=" selected "
+          }
+          txt+= ">"+scales[j]+" </option>"
+        })
+        txt+="</select><br/>"
+
+        txt+="<label>y Axis - </label>"
+        txt+="<label style=\"padding-left:10px\"> Value: </label>"
+        txt += "<select disabled=true class=\"axisOpts\" >"
+        txt+= "<option value = \"count\">count </option>"
+        txt+="</select>"
+        txt+="<label style=\"padding-left:10px\"> Scale: </label>"
+        txt += "<select id=\"scale_1\" class=\"scaleOpts\" >"
+        scales.forEach(function(s,j){
+          txt+="<option id=\"opt_"+j+"\" value = "+j
+          if(scaleInds[1]==j){
+            txt+=" selected "
+          }
+          txt+= ">"+scales[j]+" </option>"
+        })
+        txt+="</select><br/>"
+
+  }
+  else{
+      shownVars.forEach(function(v,i){
+
+        if(i==0 && shownVars.length ==2){
+          txt+="<label>x Axis - </label>"
+        }
+        else if (i==1 && shownVars.length ==2){
+          txt+="<label>y Axis - </label>"
+        }
+        else{
+          txt+="<label>Axis "+i+" - </label>"
+        }
+        txt+="<label style=\"padding-left:10px\"> Value: </label>"
+        txt += "<select id=\"v"+i+"\" class=\"axisOpts\" >"
+        shownVars.forEach(function(d,j){
+          var name = d;
+          if(shownVars_exprs[j]!=null){
+            name = shownVars_exprs[j]
+          }
+            txt+= "<option id=\"opt_"+j+"\" value = "+j+" "
+            if(j==i){
+              txt+="selected "
+            }
+
+            txt+=">"+name+" </option>"
+        })
+
+        txt+= "<option id=\"opt_delete\" value = \"delete\" > Delete </option>"
+        txt+="</select>"
+        if(plotInfo.type!= plot_types.pc){
+          txt+="<label style=\"padding-left:10px\"> Scale: </label>"
+          txt += "<select id=\"scale_"+i+"\" class=\"scaleOpts\" >"
+          scales.forEach(function(s,j){
+            txt+="<option id=\"opt_"+j+"\" value = "+j
+            if(scaleInds[i]==j){
+              txt+=" selected "
+            }
+            txt+= ">"+scales[j]+" </option>"
+          })
+          txt+="</select>"
+        }
+        txt+="<br/>"
+
+      })
+  }
+  var popUpList = $(txt);
+
+   popUpList.dialog({
+       buttons:{
+           Submit: function(){
+              var newShown = []
+              var newShown_expr = []
+              var newScaleInds = []
+              for(var i =0; i < shownVars.length; i++){
+                var selectNode = d3.select("#v"+i).node()
+                var ind = selectNode.options[selectNode.selectedIndex].value
+                if(ind!="delete"){
+                  newShown.push(shownVars[ind])
+                  newShown_expr.push(shownVars_exprs[ind])
+                  sInd = 0
+                  if(plotInfo.type != plot_types.pc){
+                    var scaleNode = d3.select("#scale_"+i).node()
+                    sInd = scaleNode.options[scaleNode.selectedIndex].value
+                  }
+                  // else{
+                  //   sInd = scaleInds[i]
+                  // }
+                  newScaleInds.push(sInd);
+                }
+              }
+              if(newShown.length==1 && plotInfo.type==plot_types.s){
+                newScaleInds = [0,newScaleInds[0]]
+              }
+              else if(newScaleInds.length ==1){
+                newScaleInds.push(0)
+              }
+
+              var update = true;
+              if(shownVars.length > 2 && newShown.length <=2){
+                update = false;
+              }
+
+              shownVars = newShown;
+              shownVars_exprs = newShown_expr;
+              scaleInds = newScaleInds;
+
+
+            plot(update)
+            $( this ).dialog('destroy').remove();
+           }
+       },
+       close:function(){
+         $( this ).dialog('destroy').remove();
+       },
+       width:500
+   });
+
+
+}
+
+
+function show_var_ops(variable, lineno){
+    var txt = '<div id=\"varOptsDialog\" title="Value Options">Please select which value to add to the plot:<br><input id="radio_0" '
     +'type="radio" class="val_rad" onchange="change_rad(this)" checked=true>' + variable
 
     tracked_ind=0;
@@ -169,7 +475,7 @@ function show_var_ops(variable, lineno, axis){
                     cExpr = null
                 }
 
-                update_plot_vars(variable,cExpr,axis);
+                update_plot_vars(variable,cExpr);
 
                 $( this ).dialog('destroy').remove();
             }
@@ -178,47 +484,47 @@ function show_var_ops(variable, lineno, axis){
     });
 }
 
-function update_plot_vars(variable,cExpr, axis){
-    if(axis==0){
-        shownVars[0] = variable;
-        shownVars_exprs[0] = cExpr;
-
-        color = generate_color_scale(variable,cExpr)
-
-        d3.selectAll(".execNode")
-        .style("fill",function(d){return get_fill_color(d,color,cExpr);})
-
-    }
-    else if(axis == 1){
-        if(shownVars.length ==0){
-            shownVars[0] = variable;
-            shownVars_exprs[0] = cExpr;
-            d3.select("#plotIcons")
-            .selectAll("img")
-            .classed('plotType',false);
-
-            d3.select("#icon-histogram")
-            .classed("plotType",true)
-            .style("display",null)
-        }
-        else{
-            shownVars[1] = variable;
-            shownVars_exprs[1] = cExpr;
-            d3.select("#plotIcons")
-            .selectAll("img")
-            .style("opacity", .25)
-            .classed('plotType',false);
-
-            d3.select("#icon-scatter")
-            .style("opacity", 1)
-            .classed("plotType",true)
-
-            d3.select("#icon-histogram")
-            .style("display","none")
-
-        }
-    }
-    else{
+function update_plot_vars(variable,cExpr,){
+    // if(axis==0){
+    //     shownVars[0] = variable;
+    //     shownVars_exprs[0] = cExpr;
+    //
+    //     color = generate_color_scale(variable,cExpr)
+    //
+    //     d3.selectAll(".execNode")
+    //     .style("fill",function(d){return get_fill_color(d,color,cExpr);})
+    //
+    // }
+    // else if(axis == 1){
+    //     if(shownVars.length ==0){
+    //         shownVars[0] = variable;
+    //         shownVars_exprs[0] = cExpr;
+    //         d3.select("#plotIcons")
+    //         .selectAll("img")
+    //         .classed('plotType',false);
+    //
+    //         d3.select("#icon-histogram")
+    //         .classed("plotType",true)
+    //         .style("display",null)
+    //     }
+    //     else{
+    //         shownVars[1] = variable;
+    //         shownVars_exprs[1] = cExpr;
+    //         d3.select("#plotIcons")
+    //         .selectAll("img")
+    //         .style("opacity", .25)
+    //         .classed('plotType',false);
+    //
+    //         d3.select("#icon-scatter")
+    //         .style("opacity", 1)
+    //         .classed("plotType",true)
+    //
+    //         d3.select("#icon-histogram")
+    //         .style("display","none")
+    //
+    //     }
+    // }
+    // else{
         shownVars.push(variable);
         shownVars_exprs.push(cExpr);
 
@@ -256,14 +562,18 @@ function update_plot_vars(variable,cExpr, axis){
 
         d3.selectAll(".execNode")
         .style("fill",function(d){return get_fill_color(d,color, shownVars_exprs[0]);})
-    }
+    // }
     plot();
 
 }
 
 function clear_plot(){
 
-    d3.select("#plot").select("svg")
+    d3.select("#plotDiv")
+    .selectAll("*")
+    .remove()
+
+    d3.select("#plotView")
     .selectAll("*")
     .remove()
 
@@ -284,97 +594,23 @@ function clear_plot(){
     var yAxis = d3.axisLeft()
     .scale(y)
 
-
-    var g= plotSVG.append("g")
-    .on("contextmenu",function(d){
-        d3.event.preventDefault();
-        cm = d3.select("#axisMenu")
-
-        x = d3.event.pageX
-        y = d3.event.pageY
-        cm.style("visibility","visible")
-        cm.style("left",(x-10)+"px")
-        cm.style("top",(y-10)+"px")
-
-    })
-    .on("mouseenter",function(d){
-        d3.select("#xRect")
-        .style("fill","whitesmoke")
-        .style("stroke","black")
-    })
-    .on("mouseleave",function(d){
-        d3.select("#xRect")
-        .style("fill","none")
-        .style("stroke","none")
-    })
-     g.append("rect")
-    .attr("x",-15)
-    .attr("y",0)
-    .style("width", plotWidth + "px")
-    .style("height","30px")
-    .style("fill","transparent")
-    .attr("transform", "translate(0," + plotHeight + ")")
-
-    g.append("g")
-    .attr("id","xaxis")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + plotHeight + ")")
-    .call(xAxis);
-
-
-    g=plotSVG.append("g")
-    .on("contextmenu",function(d){
-        d3.event.preventDefault();
-        cm = d3.select("#axisMenu")
-
-        x = d3.event.pageX
-        y = d3.event.pageY
-        cm.style("visibility","visible")
-        cm.style("left",(x-10)+"px")
-        cm.style("top",(y-10)+"px")
-
-    })
-    .on("mouseenter",function(d){
-        if(!dragging && shownVars.length<3){
-            d3.select("#yRect")
-            .style("fill","whitesmoke")
-            .style("stroke","black")
-        }
-    })
-    .on("mouseleave",function(d){
-        if(!dragging && shownVars.length<3){
-            d3.select("#yRect")
-            .style("fill","none")
-            .style("stroke","none")
-        }
-    })
-
-     g.append("rect")
-    .attr("x",-15)
-    .attr("y",0)
-    .style("width", "30px")
-    .style("height",plotHeight + "px")
-    .style("fill","transparent")
-
-
-    g.append("g")
-    .attr("id","yaxis")
-    .attr("class", "y axis")
-    .call(yAxis);
-
-
-    d3.select("#axisMenu")
-    .on('mouseleave',function(){
-        d3.select(this)
-        .style("visibility","hidden")
-    })
-
     d3.select("#plotCMenu")
     .on('mouseleave',function(){
         d3.select(this)
         .style("visibility","hidden")
     })
 
+}
+
+function reset_plot_bookkeeping(){
+  filterHideBlocks = false;
+  filtered = false;
+  filteredIds = {};
+  current_plot = null
+  groupings = []
+  scaleInds = [0,0]
+  vegaView = null;
+  selectedPoints = []
 }
 
 function get_var_type(vInd){
@@ -491,6 +727,7 @@ function plot(update = false){
     if(rootNode.parent){
         context = get_points(rootNode.parent,shownVars,plotInfo.group_on)
     }
+
     var multiInfo = {nPlots:1, nCols:1, nRows:1}
 
 
@@ -564,7 +801,7 @@ function plot(update = false){
     }
 
 
-    create_axes(multiInfo);
+    // create_axes(multiInfo);
 
     if(plotInfo.type == plot_types.pc){
         d3.select("#xaxis0").style("visibility","hidden")
@@ -578,23 +815,13 @@ function plot(update = false){
 
 
     if(plotInfo.type == plot_types.box ){
-        groupInds = []
-        plotInfo.group_on.forEach(function(ind){
-            g = groupings[ind]
-            if(g.type == grouping_types.b || g.type == grouping_types.s){
-                groupInds.push(g.attr);
-            }
-        })
 
-
-        var dat_ind = 0;
-        while(groupInds.includes(dat_ind)){
-            dat_ind++;
-        }
+        dat_ind = parseInt(plotInfo.axes[1].substring(2))
 
         box_plot(groupedPoints, groupedContext, shownVars[dat_ind], plot_dims, shownVars_exprs[dat_ind])
     }
     else if(plotInfo.type == plot_types.h){
+
         if(plotInfo.multiple){
             var keys = Object.keys(groupedPoints);
             keys.forEach(function(key,i){
@@ -633,7 +860,7 @@ function plot(update = false){
                     }
                 })
                 var dat_ind = 0;
-                while(groupInds.includes(dat_ind)){
+                while (groupInds.includes(dat_ind)){
                     dat_ind++;
                 }
 
@@ -649,6 +876,7 @@ function plot(update = false){
         }
     }
     else if(plotInfo.type == plot_types.b){
+        plotInfo.axes = ["v_"+dat_ind,"count"]
         if(plotInfo.multiple){
             var keys = Object.keys(groupedPoints);
             keys.forEach(function(key,i){
@@ -766,21 +994,26 @@ function plot(update = false){
             })
         }
         else if (shownVars.length ==1){
-            plot_scatter(points,context,"timestamp",shownVars[0],plot_dims, customX = null, customY = shownVars_exprs[0],null,plotInfo.type == plot_types.c)
+            plotInfo.axes = ["timestamp","v_0"]
+            plot_scatter(points,context, "timestamp", shownVars[0], plot_dims, customX = null, customY = shownVars_exprs[0], null, plotInfo.type == plot_types.c)
         }
         else{
-            plot_scatter(points, context, shownVars[0], shownVars[1],plot_dims, shownVars_exprs[0], shownVars_exprs[1],null,plotInfo.type == plot_types.c);
+            plotInfo.axes = ["v_0", "v_1"]
+            plot_scatter(points, context, shownVars[0], shownVars[1], plot_dims, shownVars_exprs[0], shownVars_exprs[1], null, plotInfo.type == plot_types.c);
         }
     }
-
     else if(plotInfo.type == plot_types.pc){
         if(plotInfo.multiple){
 
         }
         else{
-            plot_pc(shownVars, points, context,shownVars_exprs);
+          shownVars.forEach(function(v){
+            plotInfo.axes.push("v_"+i)
+          })
+            plot_pc(shownVars, points, context,shownVars_exprs,plot_dims);
         }
     }
+
     determine_shown_icons();
 
     var rect = d3.select("#id"+rootNode.data.id)
@@ -1110,6 +1343,7 @@ function plot_old(){
 function clearAxis(e){
     var x = e.pageX-e.offsetX;
     var y = e.pageY-e.offsetY;
+    selectedPoints = [];
 
     if (shownVars.length > 2){
         var dims = d3.selectAll(".dimension")
@@ -1186,14 +1420,13 @@ function clearAxis(e){
         var info = {nPlots:1, nCols:1, nRows:1}
 
         clear_plot();
-        create_axes(info)
+        // create_axes(info)
     }
 
     d3.select("#axisMenu")
     .style("visibility","hidden")
+
 }
-
-
 
 function changeScale(e){
      var txt = '<div title="Scale Options">Please select which scale to use:"'
@@ -1272,141 +1505,12 @@ function changeScale(e){
 
 }
 
-
 function change_scale_rad(d){
         if(d.checked){
             d3.selectAll(".scale_rad").property("checked",false)
             d3.select(d).property("checked",true)
         }
     }
-
-
-
-function get_points2(rootN,variables){
-    var l = rootN.leaves();
-    var range = [rootN.data.id, l[l.length-1].data.id];
-    var statement = ""
-    if(filtered){
-        if (variables.length == 1 ) {
-             statement = "SELECT name as name1, id as id1, timestamp as timestamp1, val as val1, lineno as lineno1 FROM tracked WHERE name=\"" +
-              variables[0] + "\" AND id IN ("
-              filteredIds[variables[0]].forEach(function(i,ind){
-                if(ind>0){
-                    statement+=","
-                }
-                statement +=i
-              })
-              statement +=")"
-
-              if (shownVars_exprs[0] != null){
-                    statement += "FROM tracked t INNER JOIN custom c ON t.id = c.baseId AND c.name="+ JSON.stringify(shownVars_exprs[0])
-              }
-        }
-        else{
-            statement = "SELECT t1.name as name1, t1.id as id1, t1.timestamp as timestamp1, t1.val as val1, t1.lineno as lineno1"
-
-            for(var i=1; i < variables.length; i++){
-                statement += ", t"+(i+1)+".name as name"+(i+1)+", t"+(i+1)+".id as id"+(i+1)+",t"+(i+1)+".timestamp as timestamp"+(i+1)+", t"+(i+1)+".val as val"+(i+1) +", t"+(i+1)+".lineno as lineno"+(i+1)
-            }
-
-            statement+=" FROM tracked t1 INNER JOIN tracked t2 ON t1.parentID = t2.parentID AND t1.iteration = t2.iteration"
-
-            for(var i = 2; i < variables.length; i++){
-                statement += ' INNER JOIN tracked t' +(i+1) + " ON t" +i + ".parentID = t"+(i+1)+".parentID AND t" + i+".iteration = t"+ (i+1)+".iteration"
-            }
-
-
-            statement += " WHERE t1.name=\"" + variables[0] + "\" AND t1.id IN ("
-            filteredIds[variables[0]].forEach(function(i,ind){
-                if(ind>0){
-                    statement+=","
-                }
-                statement +=i
-              })
-              statement +=") "
-
-
-            for(var i = 1; i < variables.length;i++){
-
-                statement+= "AND t"+ (i+1) + ".name = \""+variables[i] + "\" "
-                if(filteredIds[variables[i]] && filteredIds[variables[i]].length >0){
-                    statement += "AND t"+ (i+1) + ".id IN ("
-                    filteredIds[variables[i]].forEach(function(j,ind){
-                        if(ind>0){
-                            statement+=","
-                        }
-                        statement +=j
-                    })
-                    statement +=") "
-
-              }
-            }
-        }
-    }
-    else{
-        if (variables.length == 1 && shownVars_exprs[0] == null ) {
-             statement = "SELECT name as name1, id as id1, timestamp as timestamp1, val as val1, lineno as lineno1 FROM tracked WHERE name=\"" +
-              variables[0] + "\" AND (id >= " + range[0] +" AND id <= " + range[1] + ")"
-
-        }
-        else if (variables.length == 1){
-                statement = "SELECT t.name as name1, t.id as id1, t.timestamp as timestamp1, t.val as val1, t.lineno as lineno1, c.name as cname1, c.val as cval1 FROM tracked t "
-                statement += " INNER JOIN custom c ON t.id = c.baseID WHERE c.name="+ JSON.stringify(shownVars_exprs[0]) + " AND t.name=\"" +
-                variables[0] + "\" AND (t.id >= " + range[0] +" AND t.id <= " + range[1] + ")"
-
-        }
-        else{
-            statement = "SELECT t1.name as name1, t1.id as id1, t1.timestamp as timestamp1, t1.val as val1, t1.lineno as lineno1"
-            if(shownVars_exprs[0] != null){
-                statement+= ", c1.name as cname1, c1.val as cval1"
-            }
-            for(var i=1; i < variables.length; i++){
-                statement += ", t"+(i+1)+".name as name"+(i+1)+", t"+(i+1)+".id as id"+(i+1)+",t"+(i+1)+".timestamp as timestamp"+(i+1)+", t"+(i+1)+".val as val"+(i+1) +", t"+(i+1)+".lineno as lineno"+(i+1)
-                if(shownVars_exprs[i] != null){
-                    statement+= ", c"+ (i+1) + ".name as cname"+(i+1) + ", c"+(i+1)+".val as cval"+ (i+1)
-                }
-            }
-
-            statement+=" FROM tracked t1 INNER JOIN tracked t2 ON t1.parentID = t2.parentID AND t1.iteration = t2.iteration"
-            if (shownVars_exprs[0]!= null)
-            {
-                statement+= " INNER JOIN custom c1 ON t1.id = c1.baseID"
-            }
-            if (shownVars_exprs[1]!= null)
-            {
-                statement+= " INNER JOIN custom c2 ON t2.id = c2.baseID"
-            }
-
-
-
-
-            for(var i = 2; i < variables.length; i++){
-                statement += ' INNER JOIN tracked t' +(i+1) + " ON t" +i + ".parentID = t"+(i+1)+".parentID AND t" + i+".iteration = t"+ (i+1)+".iteration"
-                if (shownVars_exprs[i]!= null){
-                    statement+= " INNER JOIN custom c"+(i+1)+ " ON t"+(i+1) + ".id = c" +(i+1) + ".baseID"
-                }
-            }
-            statement += " WHERE t1.name=\"" + variables[0] + "\" AND t1.id >= "+range[0] + " AND t1.id <= "+ range[1]+ " "
-            if (shownVars_exprs[0]!= null)
-            {
-                statement+= " AND c1.name = " + JSON.stringify(shownVars_exprs[0])+ " "
-            }
-            for(var i = 1; i < variables.length;i++){
-
-                statement+= "AND t"+ (i+1) + ".name = \""+variables[i] + "\" AND t"+ (i+1) + ".id >= " + range[0] + " AND t"+ (i+1) + ".id<=" + range[1]+" "
-                if (shownVars_exprs[i]!= null)
-                {
-                    statement+= " AND c"+(i+1)+".name = " + JSON.stringify(shownVars_exprs[i])+ " "
-                }
-            }
-        }
-    }
-    console.log(statement)
-
-    var p = db.exec(statement)
-
-    return p
-}
 
 function get_points(rootN, variables, group = null){
     var l = rootN.leaves()
@@ -1497,27 +1601,24 @@ function filter(){
         d.data.filtered = true;
     })
 
-    var selection = d3.selectAll(".mark.selected").data()
-    var points = []
-    if(plotInfo.type == plot_types.b || plotInfo.type == plot_types.h){
-        selection.forEach(function(s){
-            if(Array.isArray(s)){
-                points = points.concat(s)
+    // var selection = selectedPoints
+    // var points = []
+    // if(plotInfo.type == plot_types.b || plotInfo.type == plot_types.h){
+    //     selection.forEach(function(s){
+    //         if(Array.isArray(s)){
+    //             points = points.concat(s)
+    //
+    //         }
+    //         else{
+    //             points = points.concat(s.data)
+    //         }
+    //     })
+    // }
+    // else{
+    //     points = selectedPoints;
+    // }
 
-            }
-            else{
-                points = points.concat(s.data)
-            }
-        })
-    }
-    else{
-        points = selection;
-    }
-
-    points.forEach(function(d){
-
-
-
+    selectedPoints.forEach(function(d){
         var no = d3.select("#id" + d.id1).data()[0]
         no.data.filtered = false
         while(no.parent && no.parent!=null){
@@ -1585,7 +1686,7 @@ function clear_filters(){
     rootNode = actualRoot
     draw_flame(actualRoot)
 
-    plot()
+    plot(true)
 }
 
 function filter_hide(){
@@ -1609,10 +1710,8 @@ function filter_hide(){
             draw_flame(actualRoot)
             rootNode = actualRoot
         }
-        plot()
+        plot(true)
     }
-
-    //TODO: FILTER
 
 }
 
@@ -1670,6 +1769,15 @@ function determine_plot(v_types,group){
     }
     if(plotInfo.multiple && plotInds.length == 1 && plotInds[0][0]=="q"){
         plotInfo.type = plot_types.box
+
+
+
+        var dat_ind = 0;
+        while(group_inds.includes(dat_ind)){
+            dat_ind++;
+        }
+        plotInfo.axes = ["g_"+0, "v_"+dat_ind]
+
     }
     else if(plotInds.length>3){
         plotInfo.type = plot_types.pc;
@@ -1687,6 +1795,12 @@ function determine_plot(v_types,group){
             i++;
         }
         plotInfo.type = pInfo.plot;
+        shownVars.forEach(function(v,i){
+          plotInfo.axes.push("v_"+i)
+        })
+        if(plotInfo.axes.length ==1){
+          plotInfo.axes.push("count")
+        }
     }
 
 
@@ -1742,6 +1856,10 @@ function determine_shown_icons(){
         .style("opacity", .25)
         .classed('plotType',false)
         .style("display",null);
+    if(plotInfo.type!=plot_types.pc){
+      d3.select("#icon-pc")
+       .style("display","none")
+    }
 
     if(plotInfo.group_on.length == 0){
         d3.select("#icon-box")
@@ -1799,8 +1917,17 @@ function determine_shown_icons(){
 
     }
     else if(plotInfo.type == plot_types.pc){
-        d3.select("#plotIcons")
+      d3.select("#icon-box")
+       .style("display","none")
+       d3.select("#icon-histogram")
         .style("display","none")
+        d3.select("#icon-scatter")
+         .style("display","none")
+         d3.select("#icon-curve")
+          .style("display","none")
+        d3.select("#icon-pc")
+        .style("opacity",1)
+        .style("display","true")
 
         //parallel coordinates
          d3.select("#xaxis")
@@ -2125,36 +2252,3 @@ plot_table = {
     }
 
 }
-
-//function handlePlotChange() {
-//        logEvent(eventTypes.click,evtObj.plot,plotType)
-//        if (plotType == "histogram"){
-//            points = db.exec("SELECT * FROM tracked WHERE name=\"" + shownVars[0]+ "\"");
-//            context = [];
-//            plot_hist(points, context, shownVars[0])
-//        }
-//        else if(plotType == "scatter"){
-//            points = db.exec("SELECT * FROM tracked WHERE name=\"" + shownVars[0]+ "\"");
-//            context = [];
-//            if(shownVars.length == 1){
-//                plot_scatter(points, context, "timestamp", shownVars[0])
-//            }
-//            else{
-//                plot_scatter(points, context, shownVars[0], shownVars[1])
-//
-//            }
-//        }
-//        else if(plotType == "curve"){
-//            if(shownVars.length == 1){
-//                plot_scatter(points, context, "timestamp", shownVars[0],true)
-//            }
-//            else{
-//                plot_scatter(points, context, shownVars[0], shownVars[1],true)
-//
-//            }
-//        }
-//
-//        if (rootNode != null){
-//            plot(rootNode);
-//        }
-//    }

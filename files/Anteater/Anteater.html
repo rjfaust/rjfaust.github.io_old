@@ -4,14 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <head>
     <title> Anteater </title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141790565-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-141790565-1');
-    </script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -53,9 +45,16 @@
       <link rel="stylesheet" type="text/css" href="styles/source.css"/>
       <link rel="stylesheet" type="text/css" href="styles/bootstrap-tour-standalone.min.css"/>
 
-
-
       <script type="text/javascript" src="data/GradientDescent.js"></script>
+      <script type="text/javascript" src="data/Fibonacci.js"></script>
+      <script type="text/javascript" src="data/DataTypes.js"></script>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/vega"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-lite"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-lite-api"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.11.1"></script>
 
 
 
@@ -132,11 +131,17 @@
         <div class="row">
             <div class="col-5">
                 <div id="code" >
-                    <textarea id="source" onscroll="Onscrollfnction();">
+                    <textarea id="source" oncontextmenu="function(){return false;}" onscroll="Onscrollfnction();">
 
                     </textarea>
-                    <label id="varDrag" pointer-events = "none">
-                    </label>
+                    <!-- <label id="varDrag" pointer-events = "none"> Test
+                    </label> -->
+                    <div id="codeCMenu" style="position:fixed; visibility:hidden " class="contextMenu">
+                        <ul style="list-style-type:none;  margin: 0; padding-left: 20px; padding-top: 5px">
+                            <li onmouseenter="cmHighlight(this)" onmouseleave="cmUnhighlight(this)" onclick="filter()">Add Variable to Plot</li>
+                <!--<li onmouseenter="cmHighlight(this)" onmouseleave="cmUnhighlight(this)" onclick="partitionTrace()" >Partition Points</li>-->
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-7">
@@ -152,29 +157,36 @@
                         <div id="plotOptArea" style="margin: 10px">
                             <div id="plotIcons">
                                 <ul class="navbar-nav mr-auto">
-                                    <li>
+                                    <li class = "navButton">
                                     <a href="#"><img id="icon-box" class = "plotType" src="img/icons/noun_Box Plot_991170.svg" height="50px" style="opacity: 1"></a>
                                     </li>
-                                    <li>
+                                    <li class = "navButton">
                                         <a href="#"><img id="icon-histogram" class = "plotType" src="img/icons/noun_histogram_2311995.svg" height="50px" style="opacity: 1"></a>
                                     </li>
-                                    <li>
+                                    <li class = "navButton">
                                         <a href="#"><img id="icon-scatter"   src="img/icons/noun_scatter_2311987.svg"   height="50px" style="opacity: 0.25"></a>
                                     </li>
-                                    <li>
+                                    <li class = "navButton">
                                         <a href="#"><img id="icon-curve"     src="img/icons/noun_curve_2312004.svg" height="50px" style="opacity: 0.25"></a>
                                     </li>
+                                    <li class = "navButton">
+                                        <a href="#"><img id="icon-pc"     src="img/icons/noun_parallel_coordinates_1503840.svg" height="50px" style="opacity: 0.25"></a>
+                                    </li>
 
-                                    <li class="nav-item dropdown">
+                                    <li id="split_btn" class="nav-item dropdown navButton">
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false"> Split plots by</a>
                                         <div class="dropdown-menu" id="group_drpdwn">
                                             <a class="nav-link drp_item"  role="button" >Clear All</a>
                                         </div>
                                     </li>
 
-                                    <li class="nav-item active">
-                                        <a class="nav-link" onclick="clear_filters()" role="button" >Clear Filters</a>
+                                    <li class="nav-item active navButton">
+                                        <a class="nav-link"  onclick="clear_filters()" role="button" >Clear Filters</a>
                                     </li>
+                                    <li id="change_plot_opts" class="nav-item active navButton">
+                                        <a class="nav-link" onclick="update_plot_opts()" role="button" >Plot Options</a>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -192,6 +204,9 @@
                             <li onmouseenter="cmHighlight(this)" onmouseleave="cmUnhighlight(this)" onclick="clearAxis(event)" >Clear Axis</li>
                             <li onmouseenter="cmHighlight(this)" onmouseleave="cmUnhighlight(this)" onclick="changeScale(event)" >Change Scale</li>
                         </ul>
+                    </div>
+                    <div id="plotView">
+
                     </div>
                 </div>
             </div>
@@ -213,6 +228,8 @@
   <script type="text/javascript" src="js/tour.js"></script>
 
   <script>
+      init_plot();
+      init_execution();
      d3.select("#traces")
         .selectAll("li")
         .data(traces)
@@ -226,9 +243,13 @@
         .attr("href","#")
         .html(function(d){return d.title})
         .on("click",function(d,i){
+            clear_bookkeeping()
+            clear_DB();
+            clear_plot();
 
             loadTrace(d.info, d.title)
-            d3.select("#traces").selectAll("nav-item").classed("active",false)
+            d3.select("#traces").selectAll(".nav-item").classed("active",false)
+            .style("background-color",null)
             d3.select("#li"+i).classed("active",true)
 
             d3.select("#traces")
@@ -238,9 +259,8 @@
 
     d3.select("#li0").select("a").dispatch('click')
 
+
     beginTour();
-
-
 
 
 

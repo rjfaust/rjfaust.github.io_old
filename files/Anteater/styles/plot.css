@@ -26,5 +26,10 @@
     width:100%
 }
 
+.navButton{
+  cursor: pointer
+}
 
-
+.navButton:hover{
+  background-color: #e6f3ff
+}

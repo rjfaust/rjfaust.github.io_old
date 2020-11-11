@@ -1,4 +1,236 @@
 function box_plot(groupedPoints, groupedContext, variable, plotDims, custom=null){
+
+    var sumStats = []
+    plotSVG = d3.select("#group_" + plotDims.ind)
+
+    var keys = Object.keys(groupedPoints)
+    var contKeys = Object.keys(groupedContext)
+
+    var ind = shownVars.indexOf(variable);
+    var colorScale = generate_color_scale(variable,custom);
+
+
+    var allKeys = [];
+    var datKey = "val" + (ind + 1);
+    if(custom != null){
+        datKey = "cval" + (ind +1);
+    }
+    var globalMin = null;
+    var globalMax = null;
+      var topMargin = 50
+
+//    var allPts = {}
+    var allPts = []
+
+    keys.forEach(function(k,i){
+        var points = groupedPoints[k];
+        if(contKeys.includes(k)){
+            points = points.concat(groupedContext[k]);
+        }
+        points.forEach(function(p){
+            p["instance"] = i
+            allPts.push(p)
+        })
+
+
+//        allKeys.push(k);
+
+//        allPts[k] = points;
+
+
+    })
+
+    var maxInst = Math.max.apply(Math,allPts.map(function(d){return d.instance}))
+    var size = plotDims.width/maxInst
+
+
+    spec = {
+
+      $schema: "https://vega.github.io/schema/vega-lite/v4.json",
+      data: {
+        values: allPts,
+//        format: { parse: { date: "date" } }
+      },
+      width: plotDims.width,
+      height: plotDims.height,
+      layer: [
+        {
+          selection: {
+            hover: {
+              type: "single",
+              on: "mouseover",
+              encodings: ["x"],
+              nearest: true,
+              init: { x: { instance: allPts[0].instance } }
+            },
+            select: {
+              type: "interval"
+            }
+          },
+          mark: "point",
+          encoding: {
+            x: { field: "instance", type: "quantitative"},
+            y: { field: datKey, aggregate:"median"},
+            opacity: { value: 0 }
+          }
+        },
+        {
+          mark: "boxplot",
+          encoding: {
+            x: { field: "instance", type: "quantitative" },
+            y: {
+              field: datKey,
+              type: "quantitative",
+            },
+            size: {value: size},
+            stroke: "black",
+            fillOpacity:{
+                condition: {selection: "select",value:1},
+                value: 0.3
+            },
+            opacity:{
+                condition: {selection: "select",value:1},
+                value: 0.3
+            }
+
+          }
+        },
+
+    // {
+    //   "transform":[
+    //     {"calculate": "datum.instance-"+size/(2*plotDims.width) *maxInst, "as":"start"},
+    //     {"calculate": size/(2*plotDims.width) *maxInst+"+datum.instance", "as":"end"}
+    //
+    //   ],
+    //   "mark": "rule",
+    //   "encoding": {
+    //     "x": {"field": "start", "type": "quantitative"},
+    //     "x2": {"field": "end", "type": "quantitative"},
+    //     "y": {"aggregate":"median","field":datKey, "type": "quantitative"},
+    //     "opacity": {"value": 1},
+    //     "color":{"value":"black"}
+    //   }
+    //
+    // }
+
+      ]
+    }
+    vegaEmbed('#plotView',spec,{
+        patch: (spec) => {
+
+          return spec;
+        }
+      }).then(result => {
+            vegaView = result.view;
+            result.view.addDataListener('select_store', function(d,e){
+                select(d,e)
+            })
+        })
+        .catch(console.warn);
+
+
+
+    function select(d,e){
+      d3.selectAll("rect.execNode")
+          .classed("highlighted",false)
+          .style("fill",function(d){return get_fill_color(d,colorScale,custom);})
+          .style("stroke",function(d){return get_stroke_color(d,colorScale);});
+      d3.selectAll("rect.contextNode")
+          .classed("highlighted",false)
+          .style("fill","gray")
+          .style("stroke","black")
+      var bounds = null;
+      selectedPoints = []
+      if(vegaView.data("select_store").length > 0){
+          bounds = vegaView.data("select_store")[0].values[0]
+          selectedPoints = allPts.filter(function(d){return d.instance >= bounds[0] && d.instance <= bounds[1]})
+          selectedPoints.forEach(function(d){
+            var id = "#id"+d.id1;
+            d3.select(id)
+            .classed("highlighted",true)
+
+            d3.select("#context" + d.id1)
+            .classed("highlighted",true)
+
+            if ("id2" in d){
+                 d3.select("#id"+d.id2)
+                .classed("highlighted",true)
+
+                d3.select("#context" + d.id2)
+                .classed("highlighted",true)
+            }
+
+          })
+          d3.selectAll(".execNode.highlighted")
+          .style("fill","red")
+
+          d3.selectAll(".contextNode.highlighted")
+          .style("fill","red")
+      }
+    }
+
+
+
+    function selection_handler(e,d){
+//        console.log(e,d)
+        selectedPts = allPts.filter(function(p){return p.instance == d.instance})
+        unHighlightNodes(allPts)
+        highlightNodes(selectedPts)
+    }
+
+     function highlightn_handler(e,d){
+//        console.log(e,d)
+        selectedPts = allPts.filter(function(p){return p.instance == d.instance})
+        unHighlightNodes(allPts)
+        highlightNodes(selectedPts)
+    }
+
+
+
+    function highlightNodes(data){
+        data.forEach(function(d){
+             id = String("#id"+d.id1);
+             var rect = d3.select(id)
+             .style("fill","red")
+             .style("stroke","DarkRed")
+             .classed("highlighted",true);
+
+
+             contextId = String("#context"+d.id1);
+             contextId = contextId.replace(".","-");
+             var rect = d3.select(contextId)
+             .style("fill","red")
+             .style("stroke","DarkRed")
+             .classed("highlighted",true);
+             });
+    }
+
+    function unHighlightNodes(data){
+
+        data.forEach(function(d){
+             id = String("#id"+d.id1);
+             var rect = d3.select(id)
+             .classed("highlighted",false)
+            .style("fill",function(d){return get_fill_color(d,color,custom);})
+            .style("stroke",function(d){return get_stroke_color(d,color);});
+
+
+
+             contextId = String("#context"+d.id1);
+             var rect = d3.select(contextId)
+             .classed("highlighted",false)
+            .style("fill","gray")
+            .style("stroke","black")
+             });
+    }
+
+
+
+}
+
+
+
+function box_plot2(groupedPoints, groupedContext, variable, plotDims, custom=null){
     var sumStats = []
     plotSVG = d3.select("#group_" + plotDims.ind)
 

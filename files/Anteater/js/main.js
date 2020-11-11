@@ -25,10 +25,29 @@ function init_source(text){
     source = text;
     sourceLines = source.split("\n")
     show_source(source);
-
-
 }
 
+function clear_bookkeeping(){
+
+  reset_plot_bookkeeping();
+  source = "",
+  trace = {},
+  tracked = {};
+  sourceLines = ""
+  variables = [];
+  expressions = [];
+  dragging = false;
+  shownVars = []
+  shownVars_exprs = []
+  rootNode = null;
+  actualRoot = null;
+  trackedTypes = {}
+  trackedTypes_expr = {}
+  trackedInstances = {}
+  instancesShown = {}
+  test = false;
+  additions = []
+}
 
 function init_trace(t,track){
 
@@ -55,13 +74,15 @@ function init_trace(t,track){
             trackedTypes_expr[tracked[v].name][e] = null
         })
     }
-
+    shownVars = [tracked[0].name]
+    shownVars_exprs = [null]
     highlight_tracked(tracked);
     create_DB();
     dbEmpty = false
     rootNode = d3.hierarchy(trace,function(d){return d.body;});
     actualRoot = d3.hierarchy(trace,function(d){return d.body;});
     draw_flame(rootNode);
+    plot();
 
     if(test){
         var update = false
@@ -92,6 +113,8 @@ function init_trace(t,track){
         plot(update)
 
     }
+
+
 }
 
 function getValue(data,varName,attrName,custom = null){
@@ -152,17 +175,17 @@ function create_DB(){
 }
 
 function clear_DB(){
-    db.exec("DROP TABLE block")
+    db.exec("DROP TABLE IF EXISTS block")
 
-    db.exec("DROP TABLE tracked")
+    db.exec("DROP TABLE IF EXISTS tracked")
 
-    db.exec("DROP TABLE function_name")
+    db.exec("DROP TABLE IF EXISTS function_name")
 
-    db.exec("DROP TABLE loop_block_connector")
+    db.exec("DROP TABLE IF EXISTS loop_block_connector")
 
-    db.exec("DROP TABLE for_loop")
+    db.exec("DROP TABLE IF EXISTS for_loop")
 
-    db.exec("DROP TABLE custom")
+    db.exec("DROP TABLE IF EXISTS custom")
 
 }
 
@@ -337,9 +360,9 @@ function loadTrace(traceInfo,title){
     t = traceInfo.trace
 
     init_plot()
-    init_execution()
     init_source(traceInfo.source)
     init_trace(t,traceInfo.tracked)
+
     loadFunctions(traceInfo.functions)
     loadLoops(traceInfo.loops)
     loadDependencies(traceInfo.dependencies)

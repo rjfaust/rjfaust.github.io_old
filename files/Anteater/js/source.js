@@ -117,6 +117,7 @@ function reset_source(text,readonly, scroll=false){
 
 
     d3.select("#code").selectAll("div").remove();
+
      d3.select("#source").html(text);
 //    editor = CodeMirror.fromTextArea(document.getElementById("source"), {
 //        lineNumbers: true,
@@ -140,47 +141,92 @@ function reset_source(text,readonly, scroll=false){
     editor.setSize(editorWidth,(window.innerHeight-155));
 //    editor.addLineClass(10,"gutter","highlightGutter");
 
-    editor.on("dragstart",function(d,e){
-        d3.select("#xRect0")
-        .style("fill","whitesmoke")
-        .style("stroke","gray")
+    editor.on("contextmenu",function(cm,e){
+          // d3.event.preventDefault();
+
+          var selectedCode = editor.getSelection();
+          var offset = document.getElementById("code").getBoundingClientRect();
+          var found = tracked.find(function(d){return d.name == selectedCode})
+          if (found != null){
+              e.preventDefault();
+              cm = d3.select("#codeCMenu")
+
+              xCoord = e.pageX
+              yCoord = e.pageY
+              cm.style("visibility","visible")
+              cm.style("left",(xCoord-10)+"px")
+              cm.style("top",(yCoord-10)+"px")
+          }
 
 
-        d3.select("#yRect0")
-        .style("fill","whitesmoke")
-        .style("stroke","gray")
-
-
-        d3.select("#plotRect0")
-        .style("fill","whitesmoke")
-        .style("stroke","gray")
-
-        var selectedCode = editor.getSelection();
-
-        var offset = document.getElementById("code").getBoundingClientRect();
-        var found = tracked.find(function(d){return d.name == selectedCode})
-        if (found != null){
-            e.preventDefault();
-            d3.select("#varDrag")
-            .style("top",(e.y-offset.top-6)+"px")
-            .style("left",e.x+ "px")
-            .html(selectedCode)
-            .style("display","block")
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
-            dragging = true;
-        }
     })
 
+    d3.select("#code")
+    .append("div")
+    .attr("id","codeCMenu")
+    .style("position","fixed")
+    .style("visibility","hidden")
+    .on('mouseleave',function(){
+        d3.select(this)
+        .style("visibility","hidden")
+    })
+    // .attr("class","contextMenu")
+    .append("ul")
+    .style("list-style-type","none")
+    .style("margin",0)
+    .style("padding-left","20px")
+    .style("padding-top","5px")
+    .append("li")
+    .on("mouseenter",function(d){cmHighlight(this)})
+    .on("mouseleave",function(d){cmUnhighlight(this)})
+    .on("click",function(d){
+      var selectedCode = editor.getSelection();
+      var cursor = editor.getCursor();
+      show_var_ops(selectedCode, cursor.line+1, 0)
 
-    if(!readonly){
-        var xbounds = document.getElementById("xRect0").getBoundingClientRect();
-        var ybounds = document.getElementById("yRect0").getBoundingClientRect();
-        var svgBounds = document.getElementById("plotRect0").getBoundingClientRect();
-        var curArea = -1;
-    }
+    })
+    .html("Add Variable to Plot")
+    // editor.on("dragstart",function(d,e){
+    //     d3.select("#xRect0")
+    //     .style("fill","whitesmoke")
+    //     .style("stroke","gray")
+    //
+    //
+    //     d3.select("#yRect0")
+    //     .style("fill","whitesmoke")
+    //     .style("stroke","gray")
+    //
+    //
+    //     d3.select("#plotRect0")
+    //     .style("fill","whitesmoke")
+    //     .style("stroke","gray")
+    //
+    //     var selectedCode = editor.getSelection();
+    //
+    //     var offset = document.getElementById("code").getBoundingClientRect();
+    //     var found = tracked.find(function(d){return d.name == selectedCode})
+    //     if (found != null){
+    //         e.preventDefault();
+    //         d3.select("#varDrag")
+    //         .style("top",(e.y-offset.top-6)+"px")
+    //         .style("left",e.x+ "px")
+    //         .html(selectedCode)
+    //         .style("display","block")
+    //         pos3 = e.clientX;
+    //         pos4 = e.clientY;
+    //         document.onmouseup = closeDragElement;
+    //         document.onmousemove = elementDrag;
+    //         dragging = true;
+    //     }
+    // })
+
+
+    // if(!readonly){
+    //     var xbounds = document.getElementById("xRect0").getBoundingClientRect();
+    //     var ybounds = document.getElementById("yRect0").getBoundingClientRect();
+    //     var svgBounds = document.getElementById("plotRect0").getBoundingClientRect();
+    //     var curArea = -1;
+    // }
 
     function elementDrag(e) {
         elmnt = document.getElementById("varDrag")
