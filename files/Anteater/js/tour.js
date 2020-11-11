@@ -34,13 +34,13 @@ function beginTour(){
           content:"You can click this to collapse or open the legend."
         },
         {
-          element:".openLegBtn",
+          element:"#execution",
           title: "Clicking Execution Block",
           placement:"left",
           content:"Clicking a block filters the visualization to show all values that occur within the selected block.  In addition, in gray, it will show all values that occur within the siblings of the selected block.",
         },
         {
-          element:".openLegBtn",
+          element:"#execution",
           title: "Right Clicking Execution Block",
           placement:"left",
           content:"Right clicking on a block zooms the execution plot in, as if the clicked block were the root. This allows us to better inspect the exeuction within that block.",
@@ -62,13 +62,13 @@ function beginTour(){
         element:"#icon-histogram",
         title:"Histogram/Bar Plot",
         placement: "top",
-        content: "Histograms are avaialble for any numeric data.  This icon will also plot bar plots for string or binary data.",
+        content: "Histograms are available for any numeric data.  This icon will also plot bar plots for string or binary data.",
 
       },
       {
-        element:"#icon-histogram",
+        element:"#plot",
         title:"Histogram/Bar Plot",
-        placement: "top",
+        placement: "left",
         content: "Clicking on or hovering over a bar highlights the corresonding instances in the exeuction view.  When a bar is selected, we can right click to filter the visualization to only show the selected values. All irrelevant parts of the exeuction plot are grayed out.",
 
       },
@@ -85,9 +85,9 @@ function beginTour(){
 
       },
       {
-        element:"#icon-scatter",
+        element:"#plot",
         title:"Scatter Plot - Brushing",
-        placement: "top",
+        placement: "left",
         content: "Brushing over the plot highlights the corresonding instances in the exeuction view. We can right click to filter the visualization to only show the values in the brush. ",
       },
       {
@@ -129,7 +129,7 @@ function beginTour(){
         onNext:function(tour){
           var cursor = editor.getCursor()
           show_var_ops("x1", 16, 0)
-          d3.select("#codecMenu").style("visibility","hidden")
+          d3.select("#codeCMenu").style("visibility","hidden")
         }
       },
       {
@@ -153,7 +153,7 @@ function beginTour(){
       {
         element:"#change_plot_opts",
         title:"Plot Options",
-        placement: "left",
+        placement: "top",
         content: "Clicking this button brings up a menu that allows you to change the variable shown on each axis, as well as the scales of the axes. ",
         onShow:function(tour){
           d3.select("#change_plot_opts")
@@ -172,7 +172,7 @@ function beginTour(){
         placement: "left",
         content: "Each of these is a pre-loaded, pre-traced program that you can inspect. The default program is \"Gradient Descent\".  Clicking on one of these will switch to that program. Let us quickly inspect \"Data Type Tests\".",
         onNext:function(tour){
-          d3.select("#li2").dispatch("click")
+          d3.select("#li2").select("a").dispatch("click")
         }
       },
       {
@@ -190,20 +190,28 @@ function beginTour(){
       {
         element:"#plot",
         title:"Boxplot - Brushing",
-        placement: "top",
+        placement: "left",
         content: "Brushing over the plot highlights the corresonding instances in the exeuction view. We can right click to filter the visualization to only show the values in the brush. ",
       },
       {
         element:"#split_btn",
         title:"Re-joining values",
-        placement: "left",
-        content: "Clicking this button opens a dropdown that allows us to change how we split the data. Un-checking all options will show all values together. "
+        placement: "top",
+        content: "Clicking this button opens a dropdown that allows us to change how we split the data. Un-checking all options will show all values together. ",
+        onShow:function(tour){
+          d3.select("#split_btn")
+          .style("background-color","#e6f3ff")
+        },
+        onNext:function(tour){
+          d3.select("#split_btn")
+          .style("background-color",null)
+        }
       },
 
       {
-        element:"",
+        element:"#source",
         title: "Begin Exploring!",
-        placement: "center",
+        placement: "right",
         content: "You are now ready to begin exploring!"
       }
 
