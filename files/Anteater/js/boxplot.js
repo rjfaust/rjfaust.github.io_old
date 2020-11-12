@@ -1,4 +1,4 @@
-function box_plot(groupedPoints, groupedContext, variable, plotDims, custom=null){
+function box_plot(groupedPoints, groupedContext, variable, plotDims, groupTitle, custom=null){
 
     var sumStats = []
     plotSVG = d3.select("#group_" + plotDims.ind)
@@ -22,6 +22,8 @@ function box_plot(groupedPoints, groupedContext, variable, plotDims, custom=null
 //    var allPts = {}
     var allPts = []
 
+    var minInstance =null;
+
     keys.forEach(function(k,i){
         var points = groupedPoints[k];
         if(contKeys.includes(k)){
@@ -31,6 +33,9 @@ function box_plot(groupedPoints, groupedContext, variable, plotDims, custom=null
             p["instance"] = i
             allPts.push(p)
         })
+        if(points.length > 0 && minInstance==null ){
+          minInstance = i
+        }
 
 
 //        allKeys.push(k);
@@ -40,20 +45,74 @@ function box_plot(groupedPoints, groupedContext, variable, plotDims, custom=null
 
     })
 
+    var name = shownVars[dat_ind]
+    if(shownVars_exprs[dat_ind]!=null){
+      name = shownVars_exprs[dat_ind]
+    }
+    var title = "Boxplot of " + name + " split on "
+    title += groupTitle
+
     var maxInst = Math.max.apply(Math,allPts.map(function(d){return d.instance}))
     var size = plotDims.width/maxInst
 
+    var xName = variable
+    if (custom!=null){
+      xName = custom
+    }
 
     spec = {
 
       $schema: "https://vega.github.io/schema/vega-lite/v4.json",
+      config:{
+        view:{
+          stroke:"transparent"
+        }
+      },
       data: {
         values: allPts,
 //        format: { parse: { date: "date" } }
       },
       width: plotDims.width,
       height: plotDims.height,
-      layer: [
+      hconcat:[
+        {
+          width:10,
+          transform:[
+            {
+              aggregate:[{
+                op:"min",
+                field:"id1",
+                as:"min_id"
+              }],
+              groupby:["instance"]
+            }
+          ],
+          encoding:{
+            x:{value:0},
+            y:{value:plotDims.height/2}
+          },
+          layer:[{
+            mark:{
+              type:"text",
+              style:"label",
+              angle:270,
+              fontWeight:"bold"
+            },
+            encoding:{text:{value:xName},
+            opacity:{
+              condition:{
+                test:"datum.instance==" + minInstance,
+                value:1
+              },
+              value:0
+            }
+          }
+          }]
+        },
+        {
+          title:title,
+          width:plotDims.width-10,
+          layer: [
         {
           selection: {
             hover: {
@@ -61,7 +120,6 @@ function box_plot(groupedPoints, groupedContext, variable, plotDims, custom=null
               on: "mouseover",
               encodings: ["x"],
               nearest: true,
-              init: { x: { instance: allPts[0].instance } }
             },
             select: {
               type: "interval"
@@ -69,18 +127,19 @@ function box_plot(groupedPoints, groupedContext, variable, plotDims, custom=null
           },
           mark: "point",
           encoding: {
-            x: { field: "instance", type: "quantitative"},
-            y: { field: datKey, aggregate:"median"},
+            x: { field: "instance", type: "quantitative", axis:{title:"instance of " + groupTitle}},
+            y: 0,
             opacity: { value: 0 }
           }
         },
         {
           mark: "boxplot",
           encoding: {
-            x: { field: "instance", type: "quantitative" },
+            x: { field: "instance", type: "quantitative", axis:{title:"instance of " + groupTitle}},
             y: {
               field: datKey,
               type: "quantitative",
+            axis:{title:null}
             },
             size: {value: size},
             stroke: "black",
@@ -93,8 +152,13 @@ function box_plot(groupedPoints, groupedContext, variable, plotDims, custom=null
                 value: 0.3
             }
 
-          }
-        },
+          },
+
+        }
+      ],
+          resolve:{scale:{y:"shared"}}
+      },
+
 
     // {
     //   "transform":[
@@ -113,7 +177,7 @@ function box_plot(groupedPoints, groupedContext, variable, plotDims, custom=null
     //
     // }
 
-      ]
+    ]
     }
     vegaEmbed('#plotView',spec,{
         patch: (spec) => {

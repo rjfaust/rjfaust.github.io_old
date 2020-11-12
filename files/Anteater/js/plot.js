@@ -817,8 +817,35 @@ function plot(update = false){
     if(plotInfo.type == plot_types.box ){
 
         dat_ind = parseInt(plotInfo.axes[1].substring(2))
+        var title = ""
+        plotInfo.group_on.forEach(function(ind,j){
+            g = groupings[ind]
 
-        box_plot(groupedPoints, groupedContext, shownVars[dat_ind], plot_dims, shownVars_exprs[dat_ind])
+            if(j > 0){
+                title += " and "
+            }
+
+            if(g.type == grouping_types.b || g.type == grouping_types.s){
+                groupInds.push(g.attr);
+
+                if(shownVars_exprs[g.attr] != null){
+                    title += shownVars_exprs[g.attr];
+                }
+                else{
+                    title += shownVars[g.attr];
+                }
+                title += "=" + vals[j]
+
+            }
+            else if(g.type == grouping_types.st){
+                title += "\""+g.attr.type + "\" at line " + g.attr.lineno
+            }
+            else{
+
+            }
+        })
+
+        box_plot(groupedPoints, groupedContext, shownVars[dat_ind], plot_dims, title, shownVars_exprs[dat_ind])
     }
     else if(plotInfo.type == plot_types.h){
 
